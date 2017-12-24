@@ -84,13 +84,13 @@ const config = {
             filename: path.join(distPath, 'index.html'),
             template: path.join(srcPath, 'index.pug'),
             favicon: path.join(srcPath, 'static' , 'favicon.ico'),
-            inject: true,
+            inject: false,
         }),
         new htmlWebpackPlugin({
             filename: path.join(distPath, 'sub.html'),
             template: path.join(srcPagePath, 'sub.pug'),
             favicon: path.join(srcPath, 'static' , 'favicon.ico'),
-            inject: true,
+            inject: false,
         }),
     ]
 };
