@@ -43,7 +43,6 @@ function add_page() {
     echo '' >> "./src/pages/${filepath}${filename}.pug"
     echo '    body' >> "./src/pages/${filepath}${filename}.pug"
     echo "        #${filename}" >> "./src/pages/${filepath}${filename}.pug"
-    echo '            test' >> "./src/pages/${filepath}${filename}.pug"
     echo '' >> "./src/pages/${filepath}${filename}.pug"
     echo "        script(src='./${filepath}${filename}.bundle.js')" >> "./src/pages/${filepath}${filename}.pug"
 
