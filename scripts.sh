@@ -12,6 +12,12 @@ function dev() {
     $(npm bin)/webpack-dev-server --inline --hot
 }
 
+###
+# 直呼び出し専用
+# 例
+# ./scripts.sh add_page HogeHoge
+# Page名はアッパーキャメルケース(ファイル名はハイフネーションになります)
+###
 function add_page() {
     insert_hyphen='s/([A-Z])/-\1/g'
     to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'

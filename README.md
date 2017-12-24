@@ -16,13 +16,22 @@
 1. `$ npm run dev`
 1. ブラウザで [http://localhost:8000](http://localhost:8000) にアクセスする
 
+## Page追加機能
+Pugのページを `./scripts.sh` から追加できます
+1. `$ ./scripts.sh add_page PageName`
+    * ページの名前はアッパーキャメルケースにしてください
+    * ページのファイル名はハイフネーションになります
+    * ページをディレクトリ指定して追加できます
+        * `$ ./scripts.sh add_vue path/PageName`
+1. ページに対応するpug, sass, tsが追加されます
+
 ## Component追加機能
 Vueのコンポーネントを `./scripts.sh` から追加できます
 1. `$ ./scripts.sh add_vue ComponentName`
     * コンポーネントの名前はアッパーキャメルケースにしてください
     * コンポーネントをディレクトリ指定して追加できます
         * `$ ./scripts.sh add_vue path/ComponentName`
-1. コンポーネントに対応するpug, sass, tsが追加されます。
+1. コンポーネントに対応するpug, sass, tsが追加されます
 
 ## プロジェクト構成
 
