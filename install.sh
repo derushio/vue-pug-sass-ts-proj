@@ -7,3 +7,6 @@ npm install --save-dev @types/node babel babel-core babel-loader\
     vue-class-component webpack webpack-dev-server
 
 node ./install-npm-scripts.js
+
+rm ./install.sh
+rm ./install-npm-scripts.js
