@@ -5,7 +5,7 @@ import UrlUtil, { Params } from './../../scripts/utils/UrlUtil';
 
 const params: Params = UrlUtil.getUrlParams();
 
-require('./../../styles/entry/index.sass');
+require('./../../styles/entry/sub.sass');
 class Sub extends Vue {};
 
 Vue.component('test', Test);
