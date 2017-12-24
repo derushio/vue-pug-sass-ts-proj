@@ -82,7 +82,7 @@ const config = {
          */
         new htmlWebpackPlugin({
             filename: path.join(distPath, 'index.html'),
-            template: path.join(srcPath, 'index.pug'),
+            template: path.join(srcPagePath, 'index.pug'),
             favicon: path.join(srcPath, 'static' , 'favicon.ico'),
             inject: false,
         }),
