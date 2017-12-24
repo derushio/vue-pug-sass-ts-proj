@@ -41,7 +41,7 @@ function add_page() {
     echo "            #${filename}" >> "./src/pages/${filepath}${filename}.pug"
     echo '                test' >> "./src/pages/${filepath}${filename}.pug"
     echo '' >> "./src/pages/${filepath}${filename}.pug"
-    echo "            script(src='./${filepath}${filename}')" >> "./src/pages/${filepath}${filename}.pug"
+    echo "            script(src='./${filepath}${filename}.js')" >> "./src/pages/${filepath}${filename}.pug"
 
     # add sass
     touch "./src/styles/entry/${filepath}${filename}.sass"
