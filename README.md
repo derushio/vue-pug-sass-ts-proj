@@ -54,6 +54,4 @@ Vueのコンポーネントを `./scripts.sh` から追加できます
 
 * dist/
     - コンパイル後のプロジェクトを配置するディレクトリ
-    * index.html
-    * index.bundle.js
 ```
