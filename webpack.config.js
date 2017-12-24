@@ -123,7 +123,6 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.optimize.OccurrenceOrderPlugin()
     ]);
-
 } else {
     config.module.loaders = config.module.loaders.concat([
         { test: /\.ts(x?)$/, loader: 'ts-loader' }
