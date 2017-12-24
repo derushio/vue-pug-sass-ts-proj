@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function clean() {
     $(npm bin)/rimraf './dist'
 }
