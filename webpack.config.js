@@ -1,22 +1,24 @@
 /**
  * require
  */
-const path = require('path')
-const webpack = require('webpack')
-const htmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');;
 
 /**
  * port
  */
-const port = 8000
+const port = 8000;
 
 /**
  * Path / File
  */
-const contextPath = path.resolve(__dirname, './')
-const distPath = path.resolve(__dirname, 'dist')
-const srcPath = path.resolve(__dirname, 'src')
-const outputFileName = 'bundle'
+const contextPath = path.resolve(__dirname, './');
+const distPath = path.resolve(__dirname, 'dist');
+const srcPath = path.resolve(__dirname, 'src');
+const srcPagePath = path.resolve(srcPath, 'page');
+const entryScriptsPath = path.resolve(srcPath, 'scripts/entry');
+const outputFileName = 'bundle';
 
 /**
  * Webpack Config
@@ -25,7 +27,8 @@ const config = {
     context: contextPath,
 
     entry: {
-        "index": path.resolve(srcPath, 'index.ts')
+        "index": path.resolve(entryScriptsPath, 'index.ts'),
+        "sub": path.resolve(entryScriptsPath, 'sub.ts')
     },
 
     output: {
@@ -83,9 +86,14 @@ const config = {
             favicon: path.join(srcPath, 'static' , 'favicon.ico'),
             inject: true,
         }),
+        new htmlWebpackPlugin({
+            filename: path.join(distPath, 'sub.html'),
+            template: path.join(srcPagePath, 'sub.pug'),
+            favicon: path.join(srcPath, 'static' , 'favicon.ico'),
+            inject: true,
+        }),
     ]
-
-}
+};
 
 /**
  * When use in production (npm run build)
@@ -95,9 +103,9 @@ if (process.env.NODE_ENV === 'production') {
     config.module.loaders = (config.module.loaders || []).concat([
         { test: /\.ts(x?)$/, loader: 'babel-loader?presets[]=es2017!ts-loader' },
         { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2017'] } }
-    ])
+    ]);
 
-    config.devtool = '#source-map'
+    config.devtool = '#source-map';
 
     /**
      * https://vuejs.org/guide/deployment.html
@@ -114,12 +122,12 @@ if (process.env.NODE_ENV === 'production') {
         }
         }),
         new webpack.optimize.OccurrenceOrderPlugin()
-    ])
+    ]);
 
 } else {
     config.module.loaders = config.module.loaders.concat([
         { test: /\.ts(x?)$/, loader: 'ts-loader' }
-    ])
-}
+    ]);
+};
 
-module.exports = config
+module.exports = config;
