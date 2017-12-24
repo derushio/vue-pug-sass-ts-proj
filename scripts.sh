@@ -13,9 +13,13 @@ function dev() {
 }
 
 function add_page() {
+    insert_hyphen='s/([A-Z])/-\1/g'
+    to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
+
     # $1分解
     filepath=`echo "${1%/*}"`
-    filename=`echo "${1##*/}"`
+    pagename=`echo "${1##*/}"`
+    filename=`echo "${pagename}" | sed -E -e $insert_hyphen -e $to_lower -e "s/^-//"`
     if [ "$filepath" = "$1" ]; then
         filepath=""
     else
@@ -59,9 +63,9 @@ function add_page() {
     echo 'const params: Params = UrlUtil.getUrlParams();' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "require('./../../styles/entry/${filepath}${filename}.sass');" >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "class ${filename} extends Vue {};" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "class ${pagename} extends Vue {};" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "new Sub().$mount('#${filename}');" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "new ${pagename}().\$mount('#${filename}');" >> "./src/scripts/entry/${filepath}${filename}.ts"
 }
 
 ###
