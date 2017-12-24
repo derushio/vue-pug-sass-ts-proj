@@ -24,11 +24,13 @@ const outputFileName = 'bundle'
 const config = {
     context: contextPath,
 
-    entry: [path.resolve(srcPath, 'index.ts')],
+    entry: {
+        "index": path.resolve(srcPath, 'index.ts')
+    },
 
     output: {
         path: distPath,
-        filename: outputFileName + '.js',
+        filename: '[name].' + outputFileName + '.js',
         // mark /dist/ folder as a public path so index.html can reach it
         publicPath: '/dist/'
     },
