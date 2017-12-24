@@ -12,7 +12,7 @@ function dev() {
     $(npm bin)/webpack-dev-server --inline --hot
 }
 
-function add_page() {
+function add_page() {
     # $1分解
     filepath=`echo "${1%/*}"`
     filename=`echo "${1##*/}"`
