@@ -16,7 +16,7 @@ const port = 8000;
 const contextPath = path.resolve(__dirname, './');
 const distPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
-const srcPagePath = path.resolve(srcPath, 'page');
+const srcPagePath = path.resolve(srcPath, 'pages');
 const entryScriptsPath = path.resolve(srcPath, 'scripts/entry');
 const outputFileName = 'bundle';
 

@@ -12,6 +12,58 @@ function dev() {
     $(npm bin)/webpack-dev-server --inline --hot
 }
 
+function add_page() {
+    # $1分解
+    filepath=`echo "${1%/*}"`
+    filename=`echo "${1##*/}"`
+    if [ "$filepath" = "$1" ]; then
+        filepath=""
+    else
+        filepath="${filepath}/"
+    fi
+
+    # mkdir
+    mkdir -p "./src/pages/${filepath}"
+    mkdir -p "./src/styles/entry/${filepath}"
+    mkdir -p "./src/scripts/entry/${filepath}"
+
+    # add pug
+    touch "./src/pages/${filepath}${filename}.pug"
+    echo 'doctype html' >> "./src/pages/${filepath}${filename}.pug"
+    echo '    html' >> "./src/pages/${filepath}${filename}.pug"
+    echo '        head' >> "./src/pages/${filepath}${filename}.pug"
+    echo '            meta(charset='utf-8')' >> "./src/pages/${filepath}${filename}.pug"
+    echo '            meta(http-equiv='X-UA-Compatible' content='IE=edge')' >> "./src/pages/${filepath}${filename}.pug"
+    echo '            meta(name='viewport' content='width=device-width, initial-scale=1.0')' >> "./src/pages/${filepath}${filename}.pug"
+    echo '            title vue proj' >> "./src/pages/${filepath}${filename}.pug"
+    echo '' >> "./src/pages/${filepath}${filename}.pug"
+    echo '        body' >> "./src/pages/${filepath}${filename}.pug"
+    echo "            #${filename}" >> "./src/pages/${filepath}${filename}.pug"
+    echo '                test' >> "./src/pages/${filepath}${filename}.pug"
+    echo '' >> "./src/pages/${filepath}${filename}.pug"
+    echo "            script(src=\'./${filepath}${filename}')" >> "./src/pages/${filepath}${filename}.pug"
+
+    # add sass
+    touch "./src/styles/entry/${filepath}${filename}.sass"
+    echo "@import './../common.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
+    echo "@import './../color.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
+    echo '' >  "./src/styles/entry/${filepath}${filename}.sass"
+    echo "#${filename}" >> "./src/styles/entry/${filepath}${filename}.sass"
+
+    # add ts
+    touch "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import Vue from 'vue';" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import UrlUtil, { Params } from './../../scripts/utils/UrlUtil';" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo 'const params: Params = UrlUtil.getUrlParams();' >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "require('./../../styles/entry/${filepath}${filename}.sass');" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "class ${filename} extends Vue {};" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "new Sub().$mount('#${filename}');" >> "./src/scripts/entry/${filepath}${filename}.ts"
+}
+
 ###
 # 直呼び出し専用
 # 例
