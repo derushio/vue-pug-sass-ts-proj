@@ -29,15 +29,18 @@ Vueのコンポーネントを `./scripts.sh` から追加できます
 ```
 * src/
     - プロジェクトのリソースを管理するディレクトリ
-    * index.pug
-    * index.sass
-    * index.ts
-        - indexに対応するファイル
 
+    * page/
+        - pugディレクトリ
+        - エントリポイントディレクトリ
     * styles/
         - 汎用sassディレクトリ
+        entry/
+            - エントリポイントディレクトリ
     * scripts/
         - 汎用typescriptディレクトリ
+        entry/
+            - エントリポイントディレクトリ
     * static/
         - favicon.ico等
 
