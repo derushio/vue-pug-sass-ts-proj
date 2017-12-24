@@ -41,13 +41,13 @@ function add_page() {
     echo "            #${filename}" >> "./src/pages/${filepath}${filename}.pug"
     echo '                test' >> "./src/pages/${filepath}${filename}.pug"
     echo '' >> "./src/pages/${filepath}${filename}.pug"
-    echo "            script(src=\'./${filepath}${filename}')" >> "./src/pages/${filepath}${filename}.pug"
+    echo "            script(src='./${filepath}${filename}')" >> "./src/pages/${filepath}${filename}.pug"
 
     # add sass
     touch "./src/styles/entry/${filepath}${filename}.sass"
     echo "@import './../common.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
     echo "@import './../color.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
-    echo '' >  "./src/styles/entry/${filepath}${filename}.sass"
+    echo '' >>  "./src/styles/entry/${filepath}${filename}.sass"
     echo "#${filename}" >> "./src/styles/entry/${filepath}${filename}.sass"
 
     # add ts
