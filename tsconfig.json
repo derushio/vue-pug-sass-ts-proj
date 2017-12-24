@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "es2015",
+        "target": "es5",
+        "moduleResolution": "node",
+        "strict": true,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "dom",
+            "es2017"
+        ]
+    },
+    "includes": [
+        "node_modules/@types/**/*.d.ts",
+        "scripts/dts/**/*.d.ts"
+    ]
+}
