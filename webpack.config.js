@@ -8,7 +8,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 /**
  * port
  */
-const port = 4000
+const port = 8000
 
 /**
  * Path / File
