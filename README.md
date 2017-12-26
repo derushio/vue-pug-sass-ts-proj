@@ -8,6 +8,9 @@
 
 ## 使用方法
 1. 本プロジェクトをclone
+    ```sh
+    $ git clone --depth 1 https://github.com/narumi18wa/vue-pug-sass-ts-proj.git
+    ```
 1. `$ chmod +x ./install.sh; ./install.sh`
 1. enjoy yourself
 
