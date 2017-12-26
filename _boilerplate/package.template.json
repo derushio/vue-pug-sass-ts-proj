@@ -1,8 +1,8 @@
 {
     "scripts": {
-        "clean": "./scripts.sh clean",
-        "build": "./scripts.sh build",
-        "dev": "./scripts.sh dev",
+        "clean": "$(npm bin)/rimraf ./dist",
+        "build": "npm run clean && $(npm bin)/webpack",
+        "dev": "$(npm bin)/webpack-dev-server --inline --hot",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {},
