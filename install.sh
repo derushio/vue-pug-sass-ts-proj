@@ -1,12 +1,8 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 npm init
-npm install --save-dev @types/node babel babel-core babel-loader\
-    css-loader html-loader html-webpack-plugin node-sass pug pug-loader\
-    rimraf sass-loader style-loader ts-loader typescript vue\
-    vue-class-component webpack webpack-dev-server
-
-node ./install-npm-scripts.js
+node ./_boilerplate/install-npm-scripts.js
+npm install
 
 rm ./install.sh
-rm ./install-npm-scripts.js
+rm -rf ./_boilerplate
