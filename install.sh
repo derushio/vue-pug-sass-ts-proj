@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 npm init
 npm install --save-dev @types/node babel babel-core babel-loader\
