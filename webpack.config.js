@@ -35,7 +35,7 @@ const config = {
         path: distPath,
         filename: '[name].' + outputFileName + '.js',
         // mark /dist/ folder as a public path so index.html can reach it
-        publicPath: '/dist/'
+        publicPath: '/'
     },
 
     /**
@@ -71,7 +71,8 @@ const config = {
                     loader: 'sass-loader',
                     options: {includePaths: [path.resolve(__dirname, 'src/')]}
                 }
-            ] }
+            ] },
+            { test: /\.(jp(e?)g|png|gif)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' }
         ]
     },
 
