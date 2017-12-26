@@ -117,4 +117,8 @@ function add_vue() {
     echo "};" >> "./src/components/scripts/${filepath}${filename}.ts"
 }
 
-$1 $2
+if [ -z ${2+UNDEF} ]; then
+    $1
+else
+    $1 $2
+fi
