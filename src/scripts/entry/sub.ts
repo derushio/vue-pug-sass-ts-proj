@@ -1,11 +1,11 @@
 import Vue from 'vue';
-import Test from './../../components/scripts/Test';
+import Test from '../../components/scripts/Test';
 
-import UrlUtil, { Params } from './../../scripts/utils/UrlUtil';
+import UrlUtil, { Params } from '../../scripts/utils/UrlUtil';
 
 const params: Params = UrlUtil.getUrlParams();
 
-require('./../../styles/entry/sub.sass');
+require('../../styles/entry/sub.sass');
 class Sub extends Vue {};
 
 Vue.component('test', Test);

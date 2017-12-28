@@ -54,8 +54,8 @@ function add_page() {
 
     # add sass
     touch "./src/styles/entry/${filepath}${filename}.sass"
-    echo "@import './../common.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
-    echo "@import './../color.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
+    echo "@import '../common.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
+    echo "@import '../color.sass'" >> "./src/styles/entry/${filepath}${filename}.sass"
     echo '' >>  "./src/styles/entry/${filepath}${filename}.sass"
     echo "#${filename}" >> "./src/styles/entry/${filepath}${filename}.sass"
 
@@ -63,11 +63,11 @@ function add_page() {
     touch "./src/scripts/entry/${filepath}${filename}.ts"
     echo "import Vue from 'vue';" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "import UrlUtil, { Params } from './../../scripts/util/UrlUtil';" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import UrlUtil, { Params } from '../../scripts/util/UrlUtil';" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo 'const params: Params = UrlUtil.getUrlParams();' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "require('./../../styles/entry/${filepath}${filename}.sass');" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "require('../../styles/entry/${filepath}${filename}.sass');" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "class ${pagename} extends Vue {};" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "new ${pagename}().\$mount('#${filename}');" >> "./src/scripts/entry/${filepath}${filename}.ts"
