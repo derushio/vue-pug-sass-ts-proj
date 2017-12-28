@@ -63,7 +63,7 @@ function add_page() {
     touch "./src/scripts/entry/${filepath}${filename}.ts"
     echo "import Vue from 'vue';" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "import UrlUtil, { Params } from './../../scripts/utils/UrlUtil';" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import UrlUtil, { Params } from './../../scripts/util/UrlUtil';" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo 'const params: Params = UrlUtil.getUrlParams();' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
