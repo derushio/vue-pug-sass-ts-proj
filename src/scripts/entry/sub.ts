@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Test from '../../components/scripts/Test';
 
-import UrlUtil, { Params } from '../../scripts/utils/UrlUtil';
+import UrlUtil, { Params } from '../../scripts/util/UrlUtil';
 
 const params: Params = UrlUtil.getUrlParams();
 
