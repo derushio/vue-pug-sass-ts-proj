@@ -93,32 +93,32 @@ function add_vue() {
     fi
 
     # mkdir
-    mkdir -p "./src/components/vues/${filepath}"
-    touch "./src/components/vues/${filepath}${filename}.vue"
+    mkdir -p "./src/components/${filepath}"
+    touch "./src/components/${filepath}${filename}.vue"
 
     # add pug
-    echo "<template lang='pug'>" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "</template>" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "<template lang='pug'>" >> "./src/components/${filepath}${filename}.vue"
+    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
+    echo "</template>" >> "./src/components/${filepath}${filename}.vue"
+    echo "" >> "./src/components/${filepath}${filename}.vue"
 
     # add ts
-    echo "<script lang='ts'>" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "import Vue from 'vue';" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "import Component from 'vue-class-component';" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "@Component({})" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "export default class ${filename} extends Vue {" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "}" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "</script>" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "<script lang='ts'>" >> "./src/components/${filepath}${filename}.vue"
+    echo "import Vue from 'vue';" >> "./src/components/${filepath}${filename}.vue"
+    echo "import Component from 'vue-class-component';" >> "./src/components/${filepath}${filename}.vue"
+    echo "" >> "./src/components/${filepath}${filename}.vue"
+    echo "@Component({})" >> "./src/components/${filepath}${filename}.vue"
+    echo "export default class ${filename} extends Vue {" >> "./src/components/${filepath}${filename}.vue"
+    echo "" >> "./src/components/${filepath}${filename}.vue"
+    echo "}" >> "./src/components/${filepath}${filename}.vue"
+    echo "</script>" >> "./src/components/${filepath}${filename}.vue"
+    echo "" >> "./src/components/${filepath}${filename}.vue"
 
     # add sass
-    echo "<style lang='sass' scoped>" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "</style>" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "<style lang='sass' scoped>" >> "./src/components/${filepath}${filename}.vue"
+    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
+    echo "</style>" >> "./src/components/${filepath}${filename}.vue"
+    echo "" >> "./src/components/${filepath}${filename}.vue"
 }
 
 if [ -z ${2+UNDEF} ]; then
