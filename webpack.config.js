@@ -72,6 +72,15 @@ const config = {
                     options: {includePaths: [path.resolve(__dirname, 'src/')]}
                 }
             ] },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                    }
+                }
+            },
             { test: /\.(jp(e?)g|png|gif)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' }
         ]
     },
