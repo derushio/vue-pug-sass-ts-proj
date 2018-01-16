@@ -107,7 +107,6 @@ function add_vue() {
     echo "import Vue from 'vue';" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "import Component from 'vue-class-component';" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "require('../styles/${filepath}${filename}.sass');" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "@Component({})" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "export default class ${filename} extends Vue {" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "" >> "./src/components/vues/${filepath}${filename}.vue"
