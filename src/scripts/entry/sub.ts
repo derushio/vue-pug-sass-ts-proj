@@ -1,13 +1,30 @@
+/**
+ * Vues
+ */
 import Vue from 'vue';
-import Test from '../../components/Test.vue';
+import Test from '@/components/Test.vue';
 
-import UrlUtil, { Params } from '../../scripts/util/UrlUtil';
-
+/**
+ * Url Utils
+ */
+import UrlUtil, { Params } from '@/scripts/util/UrlUtil';
 const params: Params = UrlUtil.getUrlParams();
 
-require('../../styles/entry/sub.sass');
+/**
+ * Require sass
+ */
+require('@/styles/entry/sub.sass');
+/**
+ * Vue root
+ */
 class Sub extends Vue {}
 
+/**
+ * Register vue component
+ */
 Vue.component('test', Test);
 
+/**
+ * Mount vue root
+ */
 new Sub().$mount('#sub');

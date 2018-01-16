@@ -15,7 +15,7 @@ const params: Params = UrlUtil.getUrlParams();
  */
 require('@/styles/entry/index.sass');
 /**
- *
+ * Vue root
  */
 class Index extends Vue {}
 
