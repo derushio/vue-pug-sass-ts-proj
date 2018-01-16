@@ -55,7 +55,7 @@ const config = {
     devtool: '#eval-source-map',
 
     resolve: {
-        extensions: ['.js', '.ts', '.vue'],
+        extensions: ['.js', '.ts', '.json' ,'.vue'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         },
@@ -116,7 +116,7 @@ if (process.env.NODE_ENV === 'production') {
             loader: 'babel-loader?presets[]=es2017!ts-loader',
             options: { appendTsSuffixTo: [ /\.vue$/ ] }
         },
-        { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2017'] } }
+        { test: /\.js$/, loader: 'babel-loader?presets[]=es2017'}
     ]);
 
     config.devtool = '#source-map';
