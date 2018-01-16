@@ -68,7 +68,7 @@ function add_page() {
     echo 'const params: Params = UrlUtil.getUrlParams();' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "require('../../styles/entry/${filepath}${filename}.sass');" >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "class ${pagename} extends Vue {};" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "class ${pagename} extends Vue {}" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo '' >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "new ${pagename}().\$mount('#${filename}');" >> "./src/scripts/entry/${filepath}${filename}.ts"
 }
@@ -93,28 +93,30 @@ function add_vue() {
     fi
 
     # mkdir
-    mkdir -p "./src/components/views/${filepath}"
-    mkdir -p "./src/components/styles/${filepath}"
-    mkdir -p "./src/components/scripts/${filepath}"
+    mkdir -p "./src/components/vues/${filepath}"
+    touch "./src/components/vues/${filepath}${filename}.vue"
 
     # add pug
-    touch "./src/components/views/${filepath}${filename}.pug"
-    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/views/${filepath}${filename}.pug"
-
-    # add sass
-    touch "./src/components/styles/${filepath}${filename}.sass"
-    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/styles/${filepath}${filename}.sass"
+    echo "<template lang='pug'>" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "</template>" >> "./src/components/vues/${filepath}${filename}.vue"
 
     # add ts
-    touch "./src/components/scripts/${filepath}${filename}.ts"
-    echo "import Vue from 'vue';" >> "./src/components/scripts/${filepath}${filename}.ts"
-    echo "import Component from 'vue-class-component';" >> "./src/components/scripts/${filepath}${filename}.ts"
-    echo "" >> "./src/components/scripts/${filepath}${filename}.ts"
-    echo "require('../styles/${filepath}${filename}.sass');" >> "./src/components/scripts/${filepath}${filename}.ts"
-    echo "@Component({template: require('../views/${filepath}${filename}.pug')()})" >> "./src/components/scripts/${filepath}${filename}.ts"
-    echo "export default class ${filename} extends Vue {" >> "./src/components/scripts/${filepath}${filename}.ts"
-    echo "" >> "./src/components/scripts/${filepath}${filename}.ts"
-    echo "};" >> "./src/components/scripts/${filepath}${filename}.ts"
+    echo "<script lang='ts'>" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "import Vue from 'vue';" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "import Component from 'vue-class-component';" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "require('../styles/${filepath}${filename}.sass');" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "@Component({template: require('../views/${filepath}${filename}.pug')()})" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "export default class ${filename} extends Vue {" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "}" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "</template>" >> "./src/components/vues/${filepath}${filename}.vue"
+
+    # add sass
+    echo "<style lang='sass' scoped>" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "</style>" >> "./src/components/vues/${filepath}${filename}.vue"
 }
 
 if [ -z ${2+UNDEF} ]; then
