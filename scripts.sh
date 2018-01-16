@@ -111,7 +111,7 @@ function add_vue() {
     echo "export default class ${filename} extends Vue {" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "}" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "</template>" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "</script>" >> "./src/components/vues/${filepath}${filename}.vue"
 
     # add sass
     echo "<style lang='sass' scoped>" >> "./src/components/vues/${filepath}${filename}.vue"
