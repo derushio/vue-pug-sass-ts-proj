@@ -98,7 +98,7 @@ function add_vue() {
 
     # add pug
     echo "<template lang='pug'>"                          >> "./src/components/${filepath}${filename}.vue"
-    echo ".vue-${filename}"                               | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
+    echo ".vue${filename}"                               | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
     echo "</template>"                                    >> "./src/components/${filepath}${filename}.vue"
     echo ""                                               >> "./src/components/${filepath}${filename}.vue"
 
