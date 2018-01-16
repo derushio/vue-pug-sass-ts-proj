@@ -100,6 +100,7 @@ function add_vue() {
     echo "<template lang='pug'>" >> "./src/components/vues/${filepath}${filename}.vue"
     echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/vues/${filepath}${filename}.vue"
     echo "</template>" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
 
     # add ts
     echo "<script lang='ts'>" >> "./src/components/vues/${filepath}${filename}.vue"
@@ -107,16 +108,18 @@ function add_vue() {
     echo "import Component from 'vue-class-component';" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "require('../styles/${filepath}${filename}.sass');" >> "./src/components/vues/${filepath}${filename}.vue"
-    echo "@Component({template: require('../views/${filepath}${filename}.pug')()})" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "@Component({})" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "export default class ${filename} extends Vue {" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "}" >> "./src/components/vues/${filepath}${filename}.vue"
     echo "</script>" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
 
     # add sass
     echo "<style lang='sass' scoped>" >> "./src/components/vues/${filepath}${filename}.vue"
     echo ".vue${filename}" | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/vues/${filepath}${filename}.vue"
     echo "</style>" >> "./src/components/vues/${filepath}${filename}.vue"
+    echo "" >> "./src/components/vues/${filepath}${filename}.vue"
 }
 
 if [ -z ${2+UNDEF} ]; then
