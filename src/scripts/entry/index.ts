@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Test from '../../components/scripts/Test';
+import Test from '../../components/vues/Test.vue';
 
 import UrlUtil, { Params } from '../../scripts/util/UrlUtil';
 

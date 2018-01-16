@@ -55,7 +55,7 @@ const config = {
     devtool: '#eval-source-map',
 
     resolve: {
-        extensions: ['.js', '.ts'],
+        extensions: ['.js', '.ts', '.vue'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         },
@@ -111,7 +111,11 @@ const config = {
 if (process.env.NODE_ENV === 'production') {
     // still need babel for production stage since uglifyJs not support es6
     config.module.loaders = (config.module.loaders || []).concat([
-        { test: /\.ts(x?)$/, loader: 'babel-loader?presets[]=es2017!ts-loader' },
+        {
+            test: /\.ts(x?)$/,
+            loader: 'babel-loader?presets[]=es2017!ts-loader',
+            options: { appendTsSuffixTo: [ /\.vue$/ ] }
+        },
         { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2017'] } }
     ]);
 
@@ -135,7 +139,11 @@ if (process.env.NODE_ENV === 'production') {
     ]);
 } else {
     config.module.loaders = config.module.loaders.concat([
-        { test: /\.ts(x?)$/, loader: 'ts-loader' }
+        {
+            test: /\.ts(x?)$/,
+            loader: 'ts-loader',
+            options: { appendTsSuffixTo: [ /\.vue$/ ] }
+        }
     ]);
 };
 
