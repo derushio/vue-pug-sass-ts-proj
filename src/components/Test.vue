@@ -15,5 +15,5 @@ export default class Test extends Vue {
 </script>
 
 <style lang='sass' scoped>
-
+.vue-test
 </style>
