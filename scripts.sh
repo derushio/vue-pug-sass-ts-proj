@@ -88,7 +88,7 @@ function add_page() {
     echo "    /**"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "     * Mount vue root"                                     >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "     */"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "    new ${pagename}().\$mount('#${filename}');"             >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "    new ${pagename}().\$mount('#${filename}');"            >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "}"                                                         >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "init();"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
