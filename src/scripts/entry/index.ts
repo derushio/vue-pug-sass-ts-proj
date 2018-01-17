@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Test from '@/components/Test.vue';
+import VueUtil from '@/scripts/util/VueUtil';
 import UrlUtil, { Params } from '@/scripts/util/UrlUtil';
 
 /**
@@ -22,9 +23,9 @@ async function init(): Promise<void> {
     const params: Params = UrlUtil.getUrlParams();
 
     /**
-     * Register vue component
+     * Register vue components
      */
-    Vue.component('test', Test);
+    VueUtil.registerComponents([Test]);
 
     /**
      * Mount vue root
