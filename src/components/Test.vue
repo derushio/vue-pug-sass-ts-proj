@@ -1,6 +1,7 @@
 <template lang='pug'>
 .vue-test
     h1 Test
+    p: input(v-model="text")
     p {{ text }}
 </template>
 
