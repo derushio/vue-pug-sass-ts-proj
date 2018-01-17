@@ -31,16 +31,25 @@ import Component from 'vue-class-component';
  */
 @Component({})
 export default class Sample extends Vue {
+    /**
+     * イメージ列挙
+     */
     private imgs: Imgs = {
         'vue-logo': require('@/resources/img/vue-logo.png')
     };
 
     private text: string = 'Hello Vue.';
 
+    /**
+     * 算術プロパティ例
+     */
     private get calcProperty(): string {
         return `${this.text} And hi there!`;
     }
 
+    /**
+     * メソッド例
+     */
     private method(): string {
         return `${this.text} And hi there!`;
     }
