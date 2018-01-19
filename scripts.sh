@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 function clean() {
-    $(npm bin)/rimraf './dist'
+    $(npm bin)/rimraf './dist/*'
 }
 
 function build() {
