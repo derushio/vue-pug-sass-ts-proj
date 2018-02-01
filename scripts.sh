@@ -128,6 +128,7 @@ function add_vue() {
     echo "<script lang='ts'>"                             >> "./src/components/${filepath}${filename}.vue"
     echo "import Vue from 'vue';"                         >> "./src/components/${filepath}${filename}.vue"
     echo "import Component from 'vue-class-component';"   >> "./src/components/${filepath}${filename}.vue"
+    echo "import VueUtil from '@/scripts/util/VueUtil';"  >> "./src/components/${filepath}${filename}.vue"
     echo ""                                               >> "./src/components/${filepath}${filename}.vue"
     echo "/**"                                            >> "./src/components/${filepath}${filename}.vue"
     echo " * Vue Component"                               >> "./src/components/${filepath}${filename}.vue"
