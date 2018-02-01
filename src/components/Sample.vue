@@ -25,6 +25,8 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import VueUtil from '@/scripts/util/VueUtil';
+import { VueConstructor } from 'vue/types/vue';
 
 /**
  * Vue Component

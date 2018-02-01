@@ -19,7 +19,7 @@ export default class VueUtil {
      * 配列でcomponentを纏めて登録する
      * @param components
      */
-    public static registerComponents(components: VueConstructor<Vue>[]) {
+    public static registerComponents(components: VueConstructor<Vue>[]): void {
         components.forEach((component) => {
             if (this.registeredComponents.includes(component)) {
                 // 登録済みは登録しない
