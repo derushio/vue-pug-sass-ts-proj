@@ -14,6 +14,10 @@ import Sample from '@/components/Sample.vue';
  */
 @Component({})
 export default class Sub extends Vue {
+    private beforeCreate(): void {
+        // Inner Vue 登録
+        VueUtil.registerComponents([Sample]);
+    }
 }
 </script>
 
