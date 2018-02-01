@@ -19,13 +19,13 @@ function dev() {
 # Page名はアッパーキャメルケース(ファイル名はハイフネーションになります)
 ###
 function add_page() {
-    insert_hyphen='s/([A-Z])/-\1/g'
-    to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
+    local insert_hyphen='s/([A-Z])/-\1/g'
+    local to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
 
     # $1分解
-    filepath=`echo "${1%/*}"`
-    pagename=`echo "${1##*/}"`
-    filename=`echo "${pagename}" | sed -E -e $insert_hyphen -e $to_lower -e "s/^-//"`
+    local filepath=`echo "${1%/*}"`
+    local pagename=`echo "${1##*/}"`
+    local filename=`echo "${pagename}" | sed -E -e $insert_hyphen -e $to_lower -e "s/^-//"`
     if [ "$filepath" = "$1" ]; then
         filepath=""
     else
@@ -57,28 +57,28 @@ function add_page() {
     add_vue "entry/$1"
 
     # add ts
-    touch "./src/scripts/${filepath}${filename}.ts"
-    echo "import Vue from 'vue';"                                    >> "./src/scripts/${filepath}${filename}.ts"
-    echo "import ${pagename} from '@/components/${pagename}.vue';"   >> "./src/scripts/${filepath}${filename}.ts"
-    echo "import UrlUtil, { Params } from '@/scripts/util/UrlUtil';" >> "./src/scripts/${filepath}${filename}.ts"
-    echo ""                                                          >> "./src/scripts/${filepath}${filename}.ts"
-    echo "/**"                                                       >> "./src/scripts/${filepath}${filename}.ts"
-    echo " * init"                                                   >> "./src/scripts/${filepath}${filename}.ts"
-    echo " */"                                                       >> "./src/scripts/${filepath}${filename}.ts"
-    echo "async function init(): Promise<void> {"                    >> "./src/scripts/${filepath}${filename}.ts"
-    echo "    /**"                                                   >> "./src/scripts/${filepath}${filename}.ts"
-    echo "     * GetUrlParams"                                       >> "./src/scripts/${filepath}${filename}.ts"
-    echo "     */"                                                   >> "./src/scripts/${filepath}${filename}.ts"
-    echo "    const params: Params = UrlUtil.getUrlParams();"        >> "./src/scripts/${filepath}${filename}.ts"
-    echo ""                                                          >> "./src/scripts/${filepath}${filename}.ts"
-    echo "    /**"                                                   >> "./src/scripts/${filepath}${filename}.ts"
-    echo "     * Mount vue root"                                     >> "./src/scripts/${filepath}${filename}.ts"
-    echo "     */"                                                   >> "./src/scripts/${filepath}${filename}.ts"
-    echo "    new ${pagename}().\$mount('#${filename}');"            >> "./src/scripts/${filepath}${filename}.ts"
-    echo "}"                                                         >> "./src/scripts/${filepath}${filename}.ts"
-    echo ""                                                          >> "./src/scripts/${filepath}${filename}.ts"
-    echo "init();"                                                   >> "./src/scripts/${filepath}${filename}.ts"
-    echo ""                                                          >> "./src/scripts/${filepath}${filename}.ts"
+    touch "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import Vue from 'vue';"                                    >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import ${pagename} from '@/components/${pagename}.vue';"   >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import UrlUtil, { Params } from '@/scripts/util/UrlUtil';" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "/**"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo " * init"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo " */"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "async function init(): Promise<void> {"                    >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "    /**"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "     * GetUrlParams"                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "     */"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "    const params: Params = UrlUtil.getUrlParams();"        >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "    /**"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "     * Mount vue root"                                     >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "     */"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "    new ${pagename}().\$mount('#${filename}');"            >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "}"                                                         >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "init();"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
 }
 
 ###
@@ -88,12 +88,12 @@ function add_page() {
 # Vue名はアッパーキャメルケース
 ###
 function add_vue() {
-    insert_hyphen='s/([A-Z])/-\1/g'
-    to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
+    local insert_hyphen='s/([A-Z])/-\1/g'
+    local to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
 
     # $1分解
-    filepath=`echo "${1%/*}"`
-    filename=`echo "${1##*/}"`
+    local filepath=`echo "${1%/*}"`
+    local filename=`echo "${1##*/}"`
     if [ "$filepath" = "$1" ]; then
         filepath=""
     else
