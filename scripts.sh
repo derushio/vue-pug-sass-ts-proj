@@ -48,7 +48,7 @@ function add_page() {
     echo "        title vue proj"                                                        >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
     echo "    body"                                                                      >> "./src/pages/${filepath}${filename}.pug"
-    echo "        #${filename}"                                                          >> "./src/pages/${filepath}${filename}.pug"
+    echo "        ${filename}#${filename}"                                               >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
     echo "        script(src='./${filename}.bundle.js')"                                 >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
@@ -61,20 +61,14 @@ function add_page() {
     echo "#${filename}"                                              >> "./src/styles/entry/${filepath}${filename}.sass"
     echo ""                                                          >> "./src/styles/entry/${filepath}${filename}.sass"
 
+    # add entry vue
+    add_vue "entry/$1"
+
     # add ts
     touch "./src/scripts/entry/${filepath}${filename}.ts"
     echo "import Vue from 'vue';"                                    >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import ${pagename} from '@/components/${pagename}.vue';"   >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "import UrlUtil, { Params } from '@/scripts/util/UrlUtil';" >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "/**"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo " * Require sass"                                           >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo " */"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "require('@/styles/entry/${filename}.sass');"               >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "/**"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo " * Vue root"                                               >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo " */"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "class ${pagename} extends Vue {}"                          >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo ""                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "/**"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo " * init"                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
