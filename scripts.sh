@@ -53,14 +53,6 @@ function add_page() {
     echo "        script(src='./${filename}.bundle.js')"                                 >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
 
-    # add sass
-    touch "./src/styles/entry/${filepath}${filename}.sass"
-    echo "@import '../common.sass'"                                  >> "./src/styles/entry/${filepath}${filename}.sass"
-    echo "@import '../color.sass'"                                   >> "./src/styles/entry/${filepath}${filename}.sass"
-    echo ""                                                          >> "./src/styles/entry/${filepath}${filename}.sass"
-    echo "#${filename}"                                              >> "./src/styles/entry/${filepath}${filename}.sass"
-    echo ""                                                          >> "./src/styles/entry/${filepath}${filename}.sass"
-
     # add entry vue
     add_vue "entry/$1"
 
