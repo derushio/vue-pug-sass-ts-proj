@@ -32,9 +32,13 @@ export default class UrlUtil {
      * @param path
      * @param params
      */
-    public static jumpUrl(path: string, params: Params): void {
-        location.href = `${location.protocol}//${location.host}/`
-            + `${path}?${this.buildParams(params)}`;
+    public static jumpUrl(path: string, params?: Params): void {
+        let url = `${location.protocol}//${location.host}/${path}`;
+        if (params != null) {
+            url += `?${this.buildParams(params)}`;
+        }
+
+        location.href = url;
     }
 }
 
