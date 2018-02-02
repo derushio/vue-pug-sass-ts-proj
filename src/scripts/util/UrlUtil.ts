@@ -28,11 +28,11 @@ export default class UrlUtil {
     }
 
     /**
-     * URLにジャンプ
+     * Pathにジャンプ
      * @param path
      * @param params
      */
-    public static jumpUrl(path: string, params?: Params): void {
+    public static jumpPath(path: string, params?: Params): void {
         let url = `${location.protocol}//${location.host}/${path}`;
         if (params != null) {
             url += `?${this.buildParams(params)}`;
