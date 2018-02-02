@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 npm init
-npm install --save-dev @types/node babel babel-core babel-loader\
+npm install --save-dev @types/node babel babel-core babel-loader babel-preset-es2017\
     css-loader file-loader html-loader html-webpack-plugin node-sass pug pug-loader\
     rimraf sass-loader style-loader ts-loader typescript vue vue-loader vue-template-compiler vue-style-loader\
     vue-class-component webpack webpack-dev-server
