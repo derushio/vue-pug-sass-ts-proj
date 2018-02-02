@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 export default class RootVue extends Vue {
-    public title: string;
+    public title: string = '';
     protected beforeCreate(): void {};
 
     protected reactiveTitle(): void {
