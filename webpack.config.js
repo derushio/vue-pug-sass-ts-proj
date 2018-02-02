@@ -49,11 +49,6 @@ const config = {
         port: port
     },
 
-    /**
-     * http://webpack.github.io/docs/configuration.html#devtool
-     */
-    devtool: '#eval-source-map',
-
     resolve: {
         extensions: ['.js', '.ts', '.json' ,'.vue'],
         alias: {
@@ -78,9 +73,16 @@ const config = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                        sass: process.env.NODE_ENV === 'production'?
+                            'vue-style-loader!css-loader!sass-loader?indentedSyntax':
+                            'vue-style-loader!css-loader?sourceMap!sass-loader?indentedSyntax'
                     }
                 }
+            },
+            {
+                test: /\.ts(x?)$/,
+                loader: 'ts-loader',
+                options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
             { test: /\.(jp(e?)g|png|gif)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' }
         ]
@@ -106,45 +108,40 @@ const config = {
     ]
 };
 
+
 /**
  * When use in production (npm run build)
  */
 if (process.env.NODE_ENV === 'production') {
-    // still need babel for production stage since uglifyJs not support es6
-    config.module.loaders = (config.module.loaders || []).concat([
-        {
-            test: /\.ts(x?)$/,
-            loader: 'babel-loader?presets[]=es2017!ts-loader',
-            options: { appendTsSuffixTo: [ /\.vue$/ ] }
-        },
-        { test: /\.js$/, loader: 'babel-loader?presets[]=es2017'}
-    ]);
-
-    config.devtool = '#source-map';
-
     /**
      * https://vuejs.org/guide/deployment.html
      */
     config.plugins = (config.plugins || []).concat([
         new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"production"'
-        }
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
         }),
         new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin()
+            sourceMap: false,
+            mangle: {
+                // Vue Componentが動かなくなる対策
+                keep_fnames: true
+            },
+            ecma: 8,
+            compress: {
+                warnings: false
+            }
+        })
     ]);
 } else {
-    config.module.loaders = config.module.loaders.concat([
-        {
-            test: /\.ts(x?)$/,
-            loader: 'ts-loader',
-            options: { appendTsSuffixTo: [ /\.vue$/ ] }
-        }
+    config.devtool = '#eval-source-map';
+    config.plugins = (config.plugins || []).concat([
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"development"'
+            }
+        }),
     ]);
 };
 
