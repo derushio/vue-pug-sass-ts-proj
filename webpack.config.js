@@ -108,7 +108,6 @@ const config = {
     ]
 };
 
-
 /**
  * When use in production (npm run build)
  */
