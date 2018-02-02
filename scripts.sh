@@ -45,7 +45,7 @@ function add_page() {
     echo "        meta(charset='utf-8')"                                                 >> "./src/pages/${filepath}${filename}.pug"
     echo "        meta(http-equiv='X-UA-Compatible' content='IE=edge')"                  >> "./src/pages/${filepath}${filename}.pug"
     echo "        meta(name='viewport' content='width=device-width, initial-scale=1.0')" >> "./src/pages/${filepath}${filename}.pug"
-    echo "        title vue proj"                                                        >> "./src/pages/${filepath}${filename}.pug"
+    echo "        title"                                                                 >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
     echo "    body"                                                                      >> "./src/pages/${filepath}${filename}.pug"
     echo "        ${filename}#${filename}"                                               >> "./src/pages/${filepath}${filename}.pug"
