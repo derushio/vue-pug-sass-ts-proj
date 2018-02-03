@@ -61,6 +61,9 @@ const config = {
         loaders: [
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.pug$/, loader: 'pug-loader' },
+            { test: /\.css$/, loader:
+                'style-loader?sourceMap=true!css-loader?sourceMap=true'
+            },
             { test: /\.sass$/, loader:
                 'style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
             },
