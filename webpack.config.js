@@ -61,13 +61,9 @@ const config = {
         loaders: [
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.pug$/, loader: 'pug-loader' },
-            { test: /\.sass$/, use: [
-                'style-loader',
-                'css-loader', {
-                    loader: 'sass-loader',
-                    options: {includePaths: [path.resolve(__dirname, 'src/')]}
-                }
-            ] },
+            { test: /\.sass$/, loader:
+                'style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
+            },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
@@ -75,7 +71,7 @@ const config = {
                     loaders: {
                         sass: process.env.NODE_ENV === 'production'?
                             'vue-style-loader!css-loader!sass-loader?indentedSyntax':
-                            'vue-style-loader!css-loader?sourceMap!sass-loader?indentedSyntax'
+                            'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
                     }
                 }
             },
