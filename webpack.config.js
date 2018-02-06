@@ -35,7 +35,7 @@ const config = {
         path: distPath,
         filename: '[name].' + outputFileName + '.js',
         // mark /dist/ folder as a public path so index.html can reach it
-        publicPath: '/dist/'
+        publicPath: '/'
     },
 
     /**
@@ -49,14 +49,10 @@ const config = {
         port: port
     },
 
-    /**
-     * http://webpack.github.io/docs/configuration.html#devtool
-     */
-    devtool: '#eval-source-map',
-
     resolve: {
-        extensions: ['.js', '.ts'],
+        extensions: ['.js', '.ts', '.json' ,'.vue'],
         alias: {
+            '@': path.resolve(srcPath),
             'vue$': 'vue/dist/vue.esm.js'
         },
     },
@@ -65,13 +61,29 @@ const config = {
         loaders: [
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.pug$/, loader: 'pug-loader' },
-            { test: /\.sass$/, use: [
-                'style-loader',
-                'css-loader', {
-                    loader: 'sass-loader',
-                    options: {includePaths: [path.resolve(__dirname, 'src/')]}
+            { test: /\.css$/, loader:
+                'style-loader?sourceMap=true!css-loader?sourceMap=true'
+            },
+            { test: /\.sass$/, loader:
+                'style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        sass: process.env.NODE_ENV === 'production'?
+                            'vue-style-loader!css-loader!sass-loader?indentedSyntax':
+                            'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
+                    }
                 }
-            ] }
+            },
+            {
+                test: /\.ts(x?)$/,
+                loader: 'ts-loader',
+                options: { appendTsSuffixTo: [ /\.vue$/ ] }
+            },
+            { test: /\.(jp(e?)g|png|gif)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' }
         ]
     },
 
@@ -99,33 +111,35 @@ const config = {
  * When use in production (npm run build)
  */
 if (process.env.NODE_ENV === 'production') {
-    // still need babel for production stage since uglifyJs not support es6
-    config.module.loaders = (config.module.loaders || []).concat([
-        { test: /\.ts(x?)$/, loader: 'babel-loader?presets[]=es2017!ts-loader' },
-        { test: /\.js$/, loader: 'babel-loader', query: { presets: ['es2017'] } }
-    ]);
-
-    config.devtool = '#source-map';
-
     /**
      * https://vuejs.org/guide/deployment.html
      */
     config.plugins = (config.plugins || []).concat([
         new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"production"'
-        }
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
         }),
         new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin()
+            sourceMap: false,
+            mangle: {
+                // Vue Componentが動かなくなる対策
+                keep_fnames: true
+            },
+            ecma: 8,
+            compress: {
+                warnings: false
+            }
+        })
     ]);
 } else {
-    config.module.loaders = config.module.loaders.concat([
-        { test: /\.ts(x?)$/, loader: 'ts-loader' }
+    config.devtool = '#eval-source-map';
+    config.plugins = (config.plugins || []).concat([
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"development"'
+            }
+        }),
     ]);
 };
 

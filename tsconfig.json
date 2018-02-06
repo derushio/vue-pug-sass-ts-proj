@@ -9,10 +9,14 @@
         "lib": [
             "dom",
             "es2017"
-        ]
+        ],
+        "baseUrl": "src/",
+        "paths": {
+            "@/*": ["./*"]
+        }
     },
     "includes": [
         "node_modules/@types/**/*.d.ts",
-        "scripts/dts/**/*.d.ts"
+        "src/scripts/dts/**/*.d.ts"
     ]
 }

@@ -25,7 +25,7 @@ Pugのページを `./scripts.sh` から追加できます
     * ページの名前はアッパーキャメルケースにしてください
     * ページのファイル名はハイフネーションになります
     * ページをディレクトリ指定して追加できます
-        * `$ ./scripts.sh add_vue path/PageName`
+        * `$ ./scripts.sh add_page path/PageName`
 1. ページに対応するpug, sass, tsが追加されます
 
 ## Component追加機能
@@ -57,12 +57,7 @@ Vueのコンポーネントを `./scripts.sh` から追加できます
         - favicon.ico等
 
     * components/
-        * views
-        * styles
-        * scripts
-            - componentに対応するそれぞれのフォルダ
-        * component.ts
-            - component用定義
+        - component用フォルダ
 
 * dist/
     - コンパイル後のプロジェクトを配置するディレクトリ

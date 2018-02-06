@@ -1,13 +1,20 @@
 import Vue from 'vue';
-import Test from './../../components/scripts/Test';
+import Sub from '@/components/entry/Sub.vue';
+import UrlUtil, { Params } from '@/scripts/util/UrlUtil';
 
-import UrlUtil, { Params } from './../../scripts/utils/UrlUtil';
+/**
+ * init
+ */
+async function init(): Promise<void> {
+    /**
+     * GetUrlParams
+     */
+    const params: Params = UrlUtil.getUrlParams();
 
-const params: Params = UrlUtil.getUrlParams();
+    /**
+     * Mount vue root
+     */
+    new Sub().$mount('#sub');
+}
 
-require('./../../styles/entry/sub.sass');
-class Sub extends Vue {};
-
-Vue.component('test', Test);
-
-new Sub().$mount('#sub');
+init();
