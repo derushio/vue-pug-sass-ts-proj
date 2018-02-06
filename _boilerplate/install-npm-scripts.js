@@ -1,8 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
-const packageFile = path.join('..', 'package.json')
-const packageTemplateFile = path.join('.', 'package.template.json')
+const packageFile = path.join(__dirname, '..', 'package.json')
+const packageTemplateFile = path.join(__dirname,  'package.template.json')
 
 let json = JSON.parse(fs.readFileSync(packageFile, 'utf8'))
 let jsonTemplate = JSON.parse(fs.readFileSync(packageTemplateFile, 'utf8'))
