@@ -1,15 +1,15 @@
 #!/bin/bash
 
 function clean() {
-    npm run clean
+    $(npm bin)/rimraf './dist'
 }
 
 function build() {
-    npm run build
+    clean && $(npm bin)/webpack
 }
 
 function dev() {
-    npm run dev
+    $(npm bin)/webpack-dev-server --inline --hot
 }
 
 ###
