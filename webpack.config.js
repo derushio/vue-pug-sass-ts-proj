@@ -83,7 +83,7 @@ const config = {
                 loader: 'ts-loader',
                 options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
-            { test: /\.(jp(e?)g|png|gif)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' }
+            { test: /\.(jp(e?)g|png|gif|svg)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' }
         ]
     },
 
