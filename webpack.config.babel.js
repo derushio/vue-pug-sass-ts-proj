@@ -1,9 +1,6 @@
-/**
- * require
- */
-const path = require('path');
-const webpack = require('webpack');
-const htmlWebpackPlugin = require('html-webpack-plugin');;
+import path from 'path';
+import webpack from 'webpack';
+import addpage from './webpack.addpage.babel'
 
 /**
  * port
@@ -26,9 +23,7 @@ const outputFileName = 'bundle';
 const config = {
     context: contextPath,
 
-    entry: {
-        "index": path.resolve(entryScriptsPath, 'index.ts')
-    },
+    entry: {},
 
     output: {
         path: distPath,
@@ -86,19 +81,13 @@ const config = {
         ]
     },
 
-    plugins: [
-        /**
-         * HMR issue, see: https://github.com/webpack/webpack/issues/1151
-         * new webpack.HotModuleReplacementPlugin(),
-         */
-        new htmlWebpackPlugin({
-            filename: path.join(distPath, 'index.html'),
-            template: path.join(srcPagePath, 'index.pug'),
-            favicon: path.join(srcPath, 'static' , 'favicon.ico'),
-            inject: false,
-        })
-    ]
+    plugins: []
 };
+
+/**
+ * add pages
+ */
+addpage(config, 'index', './favicon');
 
 /**
  * When use in production (npm run build)
