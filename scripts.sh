@@ -51,7 +51,6 @@ function add_page() {
     echo "        ${filename}#main"                                                      >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
     echo "        script(src='./${filename}.bundle.js')"                                 >> "./src/pages/${filepath}${filename}.pug"
-    echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
 
     # add entry vue
     add_vue "entry/$1" "true"
@@ -77,7 +76,6 @@ function add_page() {
     echo "}"                                                             >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo ""                                                              >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "init();"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo ""                                                              >> "./src/scripts/entry/${filepath}${filename}.ts"
 }
 
 ###
@@ -147,7 +145,6 @@ function add_vue() {
     fi
     echo ".vue${filename}"                                | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
     echo "</style>"                                       >> "./src/components/${filepath}${filename}.vue"
-    echo ""                                               >> "./src/components/${filepath}${filename}.vue"
 }
 
 if [ -z ${2+UNDEF} ]; then
