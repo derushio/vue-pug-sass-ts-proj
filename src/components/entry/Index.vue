@@ -7,8 +7,8 @@
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
-import RootVue from '@/components/RootVue';
-import Sample from '@/components/Sample.vue';
+import RootVue from '@/components/base/RootVue';
+import Sample from '@/components/sample/Sample.vue';
 
 /**
  * Vue Component
