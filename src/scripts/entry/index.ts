@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import Index from '@/components/entry/Index.vue';
 import UrlUtil, { Params } from '@/scripts/util/UrlUtil';
 
@@ -14,7 +13,7 @@ async function init(): Promise<void> {
     /**
      * Mount vue root
      */
-    new Index().$mount('#index');
+    new Index().$mount('#main');
 }
 
 init();
