@@ -54,7 +54,7 @@ function add_page() {
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
 
     # add entry vue
-    add_vue "entry/$1" true
+    add_vue "entry/$1" "true"
 
     # add ts
     touch "./src/scripts/entry/${filepath}${filename}.ts"
@@ -89,7 +89,10 @@ function add_page() {
 function add_vue() {
     local insert_hyphen='s/([A-Z])/-\1/g'
     local to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
-    local is_root=$2
+    local is_root='false'
+    if [ 2 -le $# ]; then
+        is_root="$2"
+    fi
 
     # $1分解
     local filepath=`echo "${1%/*}"`
@@ -114,7 +117,7 @@ function add_vue() {
     echo "<script lang='ts'>"                                        >> "./src/components/${filepath}${filename}.vue"
     echo "import { Vue, Component } from 'vue-property-decorator';"  >> "./src/components/${filepath}${filename}.vue"
     echo "import VueUtil from '@/scripts/util/VueUtil';"             >> "./src/components/${filepath}${filename}.vue"
-    if [ $is_root = true ]; then
+    if [ "$is_root" = "true" ]; then
     echo "import RootVue from '@/components/base/RootVue';"          >> "./src/components/${filepath}${filename}.vue"
     fi
     echo ""                                                          >> "./src/components/${filepath}${filename}.vue"
@@ -122,13 +125,26 @@ function add_vue() {
     echo " * Vue Component"                                          >> "./src/components/${filepath}${filename}.vue"
     echo " */"                                                       >> "./src/components/${filepath}${filename}.vue"
     echo "@Component"                                                >> "./src/components/${filepath}${filename}.vue"
+    if [ "$is_root" = "true" ]; then
+    echo "export default class ${filename} extends RootVue {"        >> "./src/components/${filepath}${filename}.vue"
+    echo "    public title: string = '';"                            >> "./src/components/${filepath}${filename}.vue"
+    echo ""                                                          >> "./src/components/${filepath}${filename}.vue"
+    echo "    protected beforeCreate(): void {"                      >> "./src/components/${filepath}${filename}.vue"
+    echo "        VueUtil.registerComponents([]);"                   >> "./src/components/${filepath}${filename}.vue"
+    echo "    }"                                                     >> "./src/components/${filepath}${filename}.vue"
+    else
     echo "export default class ${filename} extends Vue {"            >> "./src/components/${filepath}${filename}.vue"
+    fi
     echo "}"                                                         >> "./src/components/${filepath}${filename}.vue"
     echo "</script>"                                                 >> "./src/components/${filepath}${filename}.vue"
     echo ""                                                          >> "./src/components/${filepath}${filename}.vue"
 
     # add sass
+    if [ "$is_root" = "true" ]; then
+    echo "<style lang='sass>"                             >> "./src/components/${filepath}${filename}.vue"
+    else
     echo "<style lang='sass' scoped>"                     >> "./src/components/${filepath}${filename}.vue"
+    fi
     echo ".vue${filename}"                                | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
     echo "</style>"                                       >> "./src/components/${filepath}${filename}.vue"
     echo ""                                               >> "./src/components/${filepath}${filename}.vue"
