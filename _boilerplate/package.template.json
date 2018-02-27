@@ -5,7 +5,11 @@
         "dev": "./scripts.sh dev",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "dependencies": {},
+    "dependencies": {
+        "vue": "^2.5.13",
+        "vue-class-component": "^6.1.2",
+        "vue-property-decorator": "^6.0.0"
+    },
     "devDependencies": {
         "@types/node": "^8.5.9",
         "babel": "^6.23.0",
@@ -23,13 +27,10 @@
         "style-loader": "^0.19.1",
         "ts-loader": "^3.4.0",
         "typescript": "^2.7.1",
-        "vue": "^2.5.13",
-        "vue-class-component": "^6.1.2",
         "vue-loader": "^14.1.1",
         "vue-style-loader": "^3.1.2",
         "vue-template-compiler": "^2.5.13",
         "webpack": "^3.10.0",
         "webpack-dev-server": "^2.11.1"
     }
-  }
-  
+}
