@@ -27,8 +27,7 @@ const config = {
     context: contextPath,
 
     entry: {
-        "index": path.resolve(entryScriptsPath, 'index.ts'),
-        "sub": path.resolve(entryScriptsPath, 'sub.ts')
+        "index": path.resolve(entryScriptsPath, 'index.ts')
     },
 
     output: {
@@ -97,13 +96,7 @@ const config = {
             template: path.join(srcPagePath, 'index.pug'),
             favicon: path.join(srcPath, 'static' , 'favicon.ico'),
             inject: false,
-        }),
-        new htmlWebpackPlugin({
-            filename: path.join(distPath, 'sub.html'),
-            template: path.join(srcPagePath, 'sub.pug'),
-            favicon: path.join(srcPath, 'static' , 'favicon.ico'),
-            inject: false,
-        }),
+        })
     ]
 };
 
