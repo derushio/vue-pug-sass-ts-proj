@@ -54,7 +54,7 @@ function add_page() {
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
 
     # add entry vue
-    add_vue "entry/$1"
+    add_vue "entry/$1" true
 
     # add ts
     touch "./src/scripts/entry/${filepath}${filename}.ts"
@@ -89,6 +89,7 @@ function add_page() {
 function add_vue() {
     local insert_hyphen='s/([A-Z])/-\1/g'
     local to_lower='y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'
+    local is_root=$2
 
     # $1分解
     local filepath=`echo "${1%/*}"`
@@ -113,6 +114,9 @@ function add_vue() {
     echo "<script lang='ts'>"                                        >> "./src/components/${filepath}${filename}.vue"
     echo "import { Vue, Component } from 'vue-property-decorator';"  >> "./src/components/${filepath}${filename}.vue"
     echo "import VueUtil from '@/scripts/util/VueUtil';"             >> "./src/components/${filepath}${filename}.vue"
+    if [ $is_root = true ]; then
+    echo "import RootVue from '@/components/base/RootVue';"          >> "./src/components/${filepath}${filename}.vue"
+    fi
     echo ""                                                          >> "./src/components/${filepath}${filename}.vue"
     echo "/**"                                                       >> "./src/components/${filepath}${filename}.vue"
     echo " * Vue Component"                                          >> "./src/components/${filepath}${filename}.vue"
