@@ -48,7 +48,7 @@ function add_page() {
     echo "        title"                                                                 >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
     echo "    body"                                                                      >> "./src/pages/${filepath}${filename}.pug"
-    echo "        ${filename}#${filename}"                                               >> "./src/pages/${filepath}${filename}.pug"
+    echo "        ${filename}#main"                                                      >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
     echo "        script(src='./${filename}.bundle.js')"                                 >> "./src/pages/${filepath}${filename}.pug"
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
@@ -58,7 +58,6 @@ function add_page() {
 
     # add ts
     touch "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "import Vue from 'vue';"                                        >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "import ${pagename} from '@/components/entry/${pagename}.vue';" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "import UrlUtil, { Params } from '@/scripts/util/UrlUtil';"     >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo ""                                                              >> "./src/scripts/entry/${filepath}${filename}.ts"
@@ -74,7 +73,7 @@ function add_page() {
     echo "    /**"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "     * Mount vue root"                                         >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "     */"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "    new ${pagename}().\$mount('#${filename}');"                >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "    new ${pagename}().\$mount('#main');"                       >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "}"                                                             >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo ""                                                              >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "init();"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
