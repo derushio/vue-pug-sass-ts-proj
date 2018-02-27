@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import { Vue } from 'vue-property-decorator';
 
 // TODO: vue-property-decoratorへ以降
 export default class RootVue extends Vue {

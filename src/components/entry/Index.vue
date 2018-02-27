@@ -5,8 +5,7 @@
 </template>
 
 <script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
 import RootVue from '@/components/RootVue';
 import Sample from '@/components/Sample.vue';
@@ -14,7 +13,7 @@ import Sample from '@/components/Sample.vue';
 /**
  * Vue Component
  */
-@Component({})
+@Component
 export default class Index extends RootVue {
     public title: string = 'index';
 

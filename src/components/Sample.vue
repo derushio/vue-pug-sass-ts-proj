@@ -23,14 +23,13 @@
 </template>
 
 <script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
 
 /**
  * Vue Component
  */
-@Component({})
+@Component
 export default class Sample extends Vue {
     /**
      * イメージ列挙
