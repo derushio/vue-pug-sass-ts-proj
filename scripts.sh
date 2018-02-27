@@ -141,7 +141,7 @@ function add_vue() {
 
     # add sass
     if [ "$is_root" = "true" ]; then
-    echo "<style lang='sass>"                             >> "./src/components/${filepath}${filename}.vue"
+    echo "<style lang='sass'>"                            >> "./src/components/${filepath}${filename}.vue"
     else
     echo "<style lang='sass' scoped>"                     >> "./src/components/${filepath}${filename}.vue"
     fi
