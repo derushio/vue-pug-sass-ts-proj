@@ -10,6 +10,11 @@ import VueUtil from '@/scripts/util/VueUtil';
 import RootVue from '@/components/base/RootVue';
 import Sample from '@/components/sample/Sample.vue';
 
+import Buefy from 'buefy';
+import 'buefy/lib/buefy.css';
+
+Vue.use(Buefy);
+
 /**
  * Vue Component
  */

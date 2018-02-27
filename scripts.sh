@@ -117,6 +117,8 @@ function add_vue() {
     echo "import VueUtil from '@/scripts/util/VueUtil';"             >> "./src/components/${filepath}${filename}.vue"
     if [ "$is_root" = "true" ]; then
     echo "import RootVue from '@/components/base/RootVue';"          >> "./src/components/${filepath}${filename}.vue"
+    else
+    echo "import BuefyVue from '@/components/base/BuefyVue';"        >> "./src/components/${filepath}${filename}.vue"
     fi
     echo ""                                                          >> "./src/components/${filepath}${filename}.vue"
     echo "/**"                                                       >> "./src/components/${filepath}${filename}.vue"
@@ -131,7 +133,7 @@ function add_vue() {
     echo "        VueUtil.registerComponents([]);"                   >> "./src/components/${filepath}${filename}.vue"
     echo "    }"                                                     >> "./src/components/${filepath}${filename}.vue"
     else
-    echo "export default class ${filename} extends Vue {"            >> "./src/components/${filepath}${filename}.vue"
+    echo "export default class ${filename} extends BuefyVue {"       >> "./src/components/${filepath}${filename}.vue"
     fi
     echo "}"                                                         >> "./src/components/${filepath}${filename}.vue"
     echo "</script>"                                                 >> "./src/components/${filepath}${filename}.vue"

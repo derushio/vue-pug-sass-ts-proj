@@ -6,6 +6,7 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
+        "buefy": "^0.6.3",
         "vue": "^2.5.13",
         "vue-property-decorator": "^6.0.0"
     },

@@ -20,17 +20,29 @@
         p
             span.head メソッド:
             span {{ method() }}
+
+    h2 buefy
+    .indent
+        .columns
+            .column: button.button.is-medium.is-primary.buefy-action(@click='alert') Launch alert
+            .column: button.button.is-medium.is-primary.buefy-action(@click='showModal') Show Modal
+
+        b-modal(:active.sync='activeModal' width='640' scroll='keep')
+            .card
+                h3 modal test
+                p main text
 </template>
 
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
+import BuefyVue from '@/components/base/BuefyVue';
 
 /**
  * Vue Component
  */
 @Component
-export default class Sample extends Vue {
+export default class Sample extends BuefyVue {
     /**
      * イメージ列挙
      */
@@ -39,6 +51,7 @@ export default class Sample extends Vue {
     };
 
     private text: string = 'Hello Vue.';
+    private activeModal: boolean = false;
 
     /**
      * 算術プロパティ例
@@ -52,6 +65,14 @@ export default class Sample extends Vue {
      */
     private method(): string {
         return `${this.text} And hi there!`;
+    }
+
+    private alert(): void {
+        this.$dialog.alert('Everything looks fine!');
+    }
+
+    private showModal(): void {
+        this.activeModal = true;
     }
 }
 </script>
