@@ -6,8 +6,9 @@
     display: flex
     align-items: center
 
-    & > *
-        margin: 0.15em
+    .icon:first-child:not(:last-child)
+        margin-left: calc(-.375em - 1px)
+        margin-right: .1875em
 
 .upload input[type=file]
     display: none
