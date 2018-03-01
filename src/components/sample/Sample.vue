@@ -27,6 +27,8 @@
             .column: button.button.is-medium.is-primary.buefy-action(@click='alert') Launch alert
             .column: button.button.is-medium.is-primary.buefy-action(@click='showModal') Show Modal
 
+        b-icon(icon='home')
+
         b-modal(:active.sync='activeModal' width='640' scroll='keep')
             .card
                 h3 modal test
