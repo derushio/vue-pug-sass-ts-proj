@@ -56,10 +56,19 @@ const config = {
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.pug$/, loader: 'pug-loader' },
             { test: /\.css$/, loader:
-                'style-loader?sourceMap=true!css-loader?sourceMap=true'
+                process.env.NODE_ENV === 'production'?
+                    'vue-style-loader!css-loader':
+                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true'
             },
             { test: /\.sass$/, loader:
-                'style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
+                process.env.NODE_ENV === 'production'?
+                    'vue-style-loader!css-loader!sass-loader?indentedSyntax':
+                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
+            },
+            { test: /\.scss$/, loader:
+                process.env.NODE_ENV === 'production'?
+                    'vue-style-loader!css-loader!sass-loader':
+                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?sourceMap=true'
             },
             {
                 test: /\.vue$/,
@@ -77,7 +86,9 @@ const config = {
                 loader: 'ts-loader',
                 options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
-            { test: /\.(jp(e?)g|png|gif|svg)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' }
+            { test: /\.(jp(e?)g|png|gif|svg)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' },
+            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
         ]
     },
 
