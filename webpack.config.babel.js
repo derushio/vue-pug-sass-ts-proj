@@ -86,9 +86,9 @@ const config = {
                 loader: 'ts-loader',
                 options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
-            { test: /\.(jp(e?)g|png|gif|svg)$/, loaders: 'file-loader?name=resources/img/[name].[ext]' },
-            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
+            { test: /\.(jp(e?)g|png|gif|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: 'file-loader?name=resources/img/[name].[ext]' },
+            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff&name=resources/font/[name].[ext]" },
+            { test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader?name=resources/font/[name].[ext]" }
         ]
     },
 
@@ -98,7 +98,7 @@ const config = {
 /**
  * add pages
  */
-addpage(config, 'index', './favicon');
+addpage(config, 'index', '', './favicon');
 
 /**
  * When use in production (npm run build)

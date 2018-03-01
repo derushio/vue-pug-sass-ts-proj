@@ -1,26 +1,29 @@
 import path from 'path';
 import htmlWebpackPlugin from 'html-webpack-plugin';
 
-const contextPath = path.resolve(__dirname, './');
-const distPath = path.resolve(__dirname, 'dist');
-const srcPath = path.resolve(__dirname, 'src');
-const srcPagePath = path.resolve(srcPath, 'pages');
-const entryScriptsPath = path.resolve(srcPath, 'scripts/entry');
+const CONTEXT_PATH = path.resolve(__dirname, './');
+const DIST_PATH = path.resolve(__dirname, 'dist');
+const SRC_PATH = path.resolve(__dirname, 'src');
+const SRC_PAGE_PATH = path.resolve(SRC_PATH, 'pages');
+const ENTRY_SCRIPT_PATH = path.resolve(SRC_PATH, 'scripts/entry');
 
 /**
  * configへページ定義を追加
  * @param {any} config
- * @param {string} pagename (pages/ からのpath, `./` を付けない)
- * @param {string} faviconpath (src/ からのpath)
+ * @param {string} page pages/ からのpath, `./` を付けない
+ * @param {string} dist distpath
+ * @param {string} faviconpath src/ からのpath
  * @return {any} config
  */
-export default function addpage(config, pagename, faviconpath) {
-    config.entry[pagename] = path.resolve(entryScriptsPath, `${pagename}.ts`);
+export default function addpage(config, page, distpath, faviconpath) {
+    const scriptname = (distpath == '')? 'index': distpath;
+
+    config.entry[scriptname] = path.resolve(ENTRY_SCRIPT_PATH, `${page}.ts`);
     config.plugins.push(
         new htmlWebpackPlugin({
-            filename: path.join(distPath, `${pagename}.html`),
-            template: path.join(srcPagePath, `${pagename}.pug`),
-            favicon: path.join(srcPath, 'static' , `${faviconpath}.ico`),
+            filename: path.join(DIST_PATH, distpath, 'index.html'),
+            template: path.join(SRC_PAGE_PATH, `${page}.pug`),
+            favicon: path.join(SRC_PATH, 'static' , `${faviconpath}.ico`),
             inject: false,
         })
     );
