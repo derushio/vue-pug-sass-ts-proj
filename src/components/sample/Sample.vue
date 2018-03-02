@@ -38,13 +38,12 @@
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
-import BuefyVue from '@/components/base/BuefyVue';
 
 /**
  * Vue Component
  */
 @Component
-export default class Sample extends BuefyVue {
+export default class Sample extends Vue {
     /**
      * イメージ列挙
      */
