@@ -1,8 +1,7 @@
 import { Vue } from 'vue-property-decorator';
-import BuefyVue from '@/components/base/BuefyVue';
 
 // TODO: vue-property-decoratorへ以降
-export default abstract class RootVue extends BuefyVue {
+export default abstract class RootVue extends Vue {
     public abstract title: string;
 
     /**
