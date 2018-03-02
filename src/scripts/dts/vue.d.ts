@@ -9,5 +9,3 @@ declare module '*.vue' {
 declare interface Imgs {
     [keys: string]: string
 }
-
-declare module 'buefy';
