@@ -25,8 +25,7 @@ export default class Index extends RootVue {
 </script>
 
 <style lang='sass'>
-@import '../../styles/color.sass'
-@import '../../styles/common.sass'
+@import 'all'
 
 .vue-index
 </style>

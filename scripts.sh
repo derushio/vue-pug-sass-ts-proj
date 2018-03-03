@@ -143,6 +143,8 @@ function add_vue() {
     else
     echo "<style lang='sass' scoped>"                     >> "./src/components/${filepath}${filename}.vue"
     fi
+    echo "@import 'all'"                                  >> "./src/components/${filepath}${filename}.vue"
+    echo ""                                               >> "./src/components/${filepath}${filename}.vue"
     echo ".vue${filename}"                                | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
     echo "</style>"                                       >> "./src/components/${filepath}${filename}.vue"
 }
