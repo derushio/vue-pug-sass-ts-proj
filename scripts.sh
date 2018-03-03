@@ -49,8 +49,6 @@ function add_page() {
     echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
     echo "    body"                                                                      >> "./src/pages/${filepath}${filename}.pug"
     echo "        ${filename}#main"                                                      >> "./src/pages/${filepath}${filename}.pug"
-    echo ""                                                                              >> "./src/pages/${filepath}${filename}.pug"
-    echo "        script(src='./${filename}.bundle.js')"                                 >> "./src/pages/${filepath}${filename}.pug"
 
     # add entry vue
     add_vue "entry/$1" "true"
