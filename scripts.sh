@@ -106,7 +106,9 @@ function add_vue() {
     # add pug
     echo "<template lang='pug'>"                          >> "./src/components/${filepath}${filename}.vue"
     echo ".vue${filename}"                                | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
+    if [ "$is_root" = "true" ]; then
     echo "    .reactive-title {{ reactiveTitle() }}"      >> "./src/components/${filepath}${filename}.vue"
+    fi
     echo "</template>"                                    >> "./src/components/${filepath}${filename}.vue"
     echo ""                                               >> "./src/components/${filepath}${filename}.vue"
 
