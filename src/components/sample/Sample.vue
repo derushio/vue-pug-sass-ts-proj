@@ -79,6 +79,8 @@ export default class Sample extends Vue {
 </script>
 
 <style lang='sass' scoped>
+@import 'all'
+
 .vue-sample
     width: 80%
     max-width: 700px
