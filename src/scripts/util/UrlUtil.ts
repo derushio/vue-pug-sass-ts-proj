@@ -33,7 +33,7 @@ export default class UrlUtil {
      * @param params
      */
     public static jumpPath(path: string, params?: Params): void {
-        let url = `${location.protocol}//${location.host}${path}`;
+        let url: string = path;
         if (params != null) {
             url += `?${this.buildParams(params)}`;
         }
