@@ -19,7 +19,6 @@ export default function addpage(config, page, distpath, faviconpath) {
     const dist = distpath.replace(/^(\.)?\//, '');
     const favicon = faviconpath.replace(/^\.\//, '');
     const scriptpath = (dist == '')? 'index': dist;
-    const scriptname = /(.*\/)?(.*)$/.exec(scriptpath)[2];
 
     config.entry[scriptpath] = path.resolve(ENTRY_SCRIPT_PATH, `${page}.ts`);
     config.plugins.push(
@@ -28,7 +27,7 @@ export default function addpage(config, page, distpath, faviconpath) {
             template: path.join(SRC_PAGE_PATH, `${page}.pug`),
             favicon: path.join(SRC_PATH, `${faviconpath}.ico`),
             inject: 'body',
-            chunks: [ `${scriptname}` ]
+            chunks: [ `${scriptpath}` ]
         })
     );
 
