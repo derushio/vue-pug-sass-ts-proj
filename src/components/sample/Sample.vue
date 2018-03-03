@@ -47,24 +47,24 @@ export default class Sample extends Vue {
     /**
      * イメージ列挙
      */
-    private imgs: Imgs = {
+    protected imgs: Imgs = {
         'vue-logo': require('@/resources/img/vue-logo.png')
     };
 
-    private text: string = 'Hello Vue.';
-    private activeModal: boolean = false;
+    protected text: string = 'Hello Vue.';
+    protected activeModal: boolean = false;
 
     /**
      * 算術プロパティ例
      */
-    private get calcProperty(): string {
+    protected get calcProperty(): string {
         return `${this.text} And hi there!`;
     }
 
     /**
      * メソッド例
      */
-    private method(): string {
+    protected method(): string {
         return `${this.text} And hi there!`;
     }
 
