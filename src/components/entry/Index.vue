@@ -10,9 +10,7 @@ import VueUtil from '@/scripts/util/VueUtil';
 import RootVue from '@/components/base/RootVue';
 import Sample from '@/components/sample/Sample.vue';
 
-import 'mdi/scss/materialdesignicons.scss';
 import Buefy from 'buefy';
-import 'buefy/lib/buefy.min.css';
 
 Vue.use(Buefy);
 
