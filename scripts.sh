@@ -135,7 +135,7 @@ function add_vue() {
     echo "        VueUtil.registerComponents([]);"                   >> "./src/components/${filepath}${filename}.vue"
     echo "    }"                                                     >> "./src/components/${filepath}${filename}.vue"
     else
-    echo "export default class ${filename} extends Vue {"       >> "./src/components/${filepath}${filename}.vue"
+    echo "export default class ${filename} extends Vue {"            >> "./src/components/${filepath}${filename}.vue"
     fi
     echo "}"                                                         >> "./src/components/${filepath}${filename}.vue"
     echo "</script>"                                                 >> "./src/components/${filepath}${filename}.vue"
