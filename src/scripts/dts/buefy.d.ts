@@ -5,7 +5,9 @@ declare module 'buefy' {
         Toast, Snackbar } from '@/scripts/dts/buefy/components';
     import { ColorModifiers } from '@/scripts/dts/buefy/helpers';
 
-    const _default: (Vue: typeof _Vue, config: BuefyConfig) => {};
+    const _default: {
+        install(Vue: typeof _Vue, config: BuefyConfig): void;
+    }
 
     export default _default;
     export { Dialog, ModalProgrammatic, LoadingProgrammatic,
