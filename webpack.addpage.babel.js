@@ -10,21 +10,25 @@ const ENTRY_SCRIPT_PATH = path.resolve(SRC_PATH, 'scripts/entry');
 /**
  * configへページ定義を追加
  * @param {any} config
- * @param {string} page pages/ からのpath, `./` を付けない
+ * @param {string} page pages/ からのpath
  * @param {string} dist distpath
  * @param {string} faviconpath src/ からのpath
  * @return {any} config
  */
 export default function addpage(config, page, distpath, faviconpath) {
-    const scriptname = (distpath == '')? 'index': distpath;
+    const dist = distpath.replace(/^(\.)?\//, '');
+    const favicon = faviconpath.replace(/^\.\//, '');
+    const scriptpath = (dist == '')? 'index': dist;
+    const scriptname = /(.*\/)?(.*)$/.exec(scriptpath)[2];
 
-    config.entry[scriptname] = path.resolve(ENTRY_SCRIPT_PATH, `${page}.ts`);
+    config.entry[scriptpath] = path.resolve(ENTRY_SCRIPT_PATH, `${page}.ts`);
     config.plugins.push(
         new htmlWebpackPlugin({
-            filename: path.join(DIST_PATH, distpath, 'index.html'),
+            filename: path.join(DIST_PATH, dist, 'index.html'),
             template: path.join(SRC_PAGE_PATH, `${page}.pug`),
-            favicon: path.join(SRC_PATH, 'static' , `${faviconpath}.ico`),
-            inject: false,
+            favicon: path.join(SRC_PATH, `${faviconpath}.ico`),
+            inject: 'body',
+            chunks: [ `${scriptname}` ]
         })
     );
 

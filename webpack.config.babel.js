@@ -98,7 +98,7 @@ const config = {
 /**
  * add pages
  */
-addpage(config, 'index', '', './favicon');
+addpage(config, 'index', '/', './static/favicon');
 
 /**
  * When use in production (npm run build)
