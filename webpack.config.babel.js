@@ -62,13 +62,17 @@ const config = {
             },
             { test: /\.sass$/, loader:
                 process.env.NODE_ENV === 'production'?
-                    'vue-style-loader!css-loader!sass-loader?indentedSyntax&includePaths[]=src/styles':
-                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true&includePaths[]=src/styles'
+                    'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                    + '&includePaths[]=src/styles&includePaths[]=node_modules':
+                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
+                    + '&includePaths[]=src/styles&includePaths[]=node_modules'
             },
             { test: /\.scss$/, loader:
                 process.env.NODE_ENV === 'production'?
-                    'vue-style-loader!css-loader!sass-loader&includePaths[]=src/styles':
-                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?sourceMap=true&includePaths[]=src/styles'
+                    'vue-style-loader!css-loader!sass-loader'
+                    + '?includePaths[]=src/styles&includePaths[]=node_modules':
+                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?sourceMap=true'
+                    + '&includePaths[]=src/styles&includePaths[]=node_modules'
             },
             {
                 test: /\.vue$/,
@@ -76,8 +80,10 @@ const config = {
                 options: {
                     loaders: {
                         sass: process.env.NODE_ENV === 'production'?
-                            'vue-style-loader!css-loader!sass-loader?indentedSyntax&includePaths[]=src/styles':
-                            'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true&includePaths[]=src/styles'
+                            'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+                            + '&includePaths[]=src/styles&includePaths[]=node_modules':
+                            'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
+                            + '&includePaths[]=src/styles&includePaths[]=node_modules'
                     }
                 }
             },
