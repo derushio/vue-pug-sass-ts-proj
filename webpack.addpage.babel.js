@@ -25,7 +25,7 @@ export default function addpage(config, page, distpath, faviconpath) {
         new htmlWebpackPlugin({
             filename: path.join(DIST_PATH, dist, 'index.html'),
             template: path.join(SRC_PAGE_PATH, `${page}.pug`),
-            favicon: path.join(SRC_PATH, `${faviconpath}.ico`),
+            favicon: path.join(SRC_PATH, `${faviconpath}`),
             inject: 'body',
             chunks: [ `${scriptpath}` ]
         })
