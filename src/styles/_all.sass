@@ -1,7 +1,14 @@
 @import '~mdi/css/materialdesignicons.css'
-@import '~buefy/lib/buefy.min.css'
+@import 'bulma/sass/utilities/all'
 
 @import 'color'
 @import 'common'
 @import 'zindex'
 @import 'media'
+
+$primary: #0075c1
+
+$colors: ("white": ($white, $black), "black": ($black, $white), "light": ($light, $light-invert), "dark": ($dark, $dark-invert), "primary": ($primary, $primary-invert), "info": ($info, $info-invert), "success": ($success, $success-invert), "warning": ($warning, $warning-invert), "danger": ($danger, $danger-invert))
+
+@import 'bulma/bulma'
+@import 'buefy/src/scss/buefy'
