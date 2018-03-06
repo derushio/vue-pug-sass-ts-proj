@@ -62,17 +62,19 @@ const config = {
             },
             { test: /\.sass$/, loader:
                 process.env.NODE_ENV === 'production'?
-                    'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-                    + '&includePaths[]=src/styles&includePaths[]=node_modules':
-                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
-                    + '&includePaths[]=src/styles&includePaths[]=node_modules'
+                    'vue-style-loader!css-loader!resolve-url-loader!sass-loader?indentedSyntax'
+                        + '&includePaths[]=src/styles':
+                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                        + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
+                        + '&includePaths[]=src/styles'
             },
             { test: /\.scss$/, loader:
                 process.env.NODE_ENV === 'production'?
-                    'vue-style-loader!css-loader!sass-loader'
-                    + '?includePaths[]=src/styles&includePaths[]=node_modules':
-                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?sourceMap=true'
-                    + '&includePaths[]=src/styles&includePaths[]=node_modules'
+                    'vue-style-loader!css-loader!resolve-url-loader!sass-loader'
+                        + '?includePaths[]=src/styles':
+                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                        + 'resolve-url-loader!sass-loader?sourceMap=true'
+                        + '&includePaths[]=src/styles'
             },
             {
                 test: /\.vue$/,
@@ -80,10 +82,11 @@ const config = {
                 options: {
                     loaders: {
                         sass: process.env.NODE_ENV === 'production'?
-                            'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-                            + '&includePaths[]=src/styles&includePaths[]=node_modules':
-                            'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!sass-loader?indentedSyntax&sourceMap=true'
-                            + '&includePaths[]=src/styles&includePaths[]=node_modules'
+                            'vue-style-loader!css-loader!resolve-url-loader!sass-loader?indentedSyntax'
+                                + '&includePaths[]=src/styles':
+                            'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                                + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
+                                + '&includePaths[]=src/styles'
                     }
                 }
             },
@@ -92,9 +95,9 @@ const config = {
                 loader: 'ts-loader',
                 options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
-            { test: /\.(jp(e?)g|png|gif|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: 'file-loader?name=resources/img/[name].[ext]' },
-            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff&name=resources/font/[name].[ext]" },
-            { test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader?name=resources/font/[name].[ext]" }
+            { test: /\.(jp(e?)g|png|gif|svg)(\?v=\d+\.\d+\.\d+)?$/, loaders: 'file-loader?name=resources/img/[name].[ext]' },
+            { test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff&name=resources/font/[name].[ext]" },
+            { test: /\.(ttf|eot)(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?name=resources/font/[name].[ext]" }
         ]
     },
 
