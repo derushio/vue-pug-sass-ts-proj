@@ -144,10 +144,11 @@ function add_vue() {
     # add sass
     if [ "$is_root" = "true" ]; then
     echo "<style lang='sass'>"                            >> "./src/components/${filepath}${filename}.vue"
+    echo "@import 'all'"                                  >> "./src/components/${filepath}${filename}.vue"
     else
     echo "<style lang='sass' scoped>"                     >> "./src/components/${filepath}${filename}.vue"
+    echo "@import 'variable'"                             >> "./src/components/${filepath}${filename}.vue"
     fi
-    echo "@import 'all'"                                  >> "./src/components/${filepath}${filename}.vue"
     echo ""                                               >> "./src/components/${filepath}${filename}.vue"
     echo ".vue${filename}"                                | sed -E -e $insert_hyphen -e $to_lower >> "./src/components/${filepath}${filename}.vue"
     echo "</style>"                                       >> "./src/components/${filepath}${filename}.vue"
