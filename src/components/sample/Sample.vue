@@ -1,38 +1,42 @@
 <template lang='pug'>
 .vue-sample
-    h1 Sample
+    header.hero.is-dark
+        .hero-body
+            .container
+                h1.title Sample
 
-    h2 画像の読み込み
-    .indent
-        img.vue-logo(v-bind:src='imgs["vue-logo"]')
+    section.main.section
+        .chapter
+            h2 画像の読み込み
+            .has-text-centered
+                img.vue-logo(v-bind:src='imgs["vue-logo"]')
 
-    h2 データバインド
-    .indent
-        p: input(v-model='text')
-        p {{ text }}
+        .chapter
+            h2 データバインド
+            .indent
+                b-field(label='INPUT')
+                    b-input(v-model='text')
+                b-field(label='OUTPUT')
+                    b-input(v-model='text' readonly)
 
-    h2 算術プロパティ
-    .indent
-        p
-            span.head 算術プロパティ:
-            span {{ calcProperty }}
+        .chapter
+            h2 算術プロパティ
+            .indent
+                .columns
+                    .column.is-3: span 算術プロパティ:
+                    .column: span {{ calcProperty }}
 
-        p
-            span.head メソッド:
-            span {{ method() }}
+                .columns
+                    .column.is-3: span メソッド:
+                    .column: span {{ method() }}
 
-    h2 buefy
-    .indent
-        .columns
-            .column: button.button.is-medium.is-primary.buefy-action(@click='alert') Launch alert
-            .column: button.button.is-medium.is-primary.buefy-action(@click='showModal') Show Modal
-
-        b-icon(icon='home')
-
-        b-modal(:active.sync='activeModal' width='640' scroll='keep')
-            .card
-                h3 modal test
-                p main text
+        .chapter
+            h2 Buefy コンポーネント
+            .columns
+                .column.is-harf.has-text-centered
+                    a.button.is-primary(@click='alert') Launch alert
+                .column.is-harf.has-text-centered
+                    a.button.is-primary(@click='showModal') Show Modal
 </template>
 
 <script lang='ts'>
@@ -52,7 +56,6 @@ export default class Sample extends Vue {
     };
 
     protected text: string = 'Hello Vue.';
-    protected activeModal: boolean = false;
 
     /**
      * 算術プロパティ例
@@ -68,39 +71,45 @@ export default class Sample extends Vue {
         return `${this.text} And hi there!`;
     }
 
+    /**
+     * アラート
+     */
     private alert(): void {
         this.$dialog.alert('Everything looks fine!');
     }
 
+    /**
+     * モーダル
+     */
     private showModal(): void {
-        this.activeModal = true;
+        this.$modal.open({component: Sample, hasModalCard: false});
     }
 }
 </script>
 
 <style lang='sass' scoped>
-@import 'all'
+@import 'variable'
 
 .vue-sample
-    width: 80%
-    max-width: 700px
-    margin: 16px auto
+    background-color: $white
 
     h1
         font-size: 1.4em
-        margin: 16px 0
 
     h2
         font-size: 1.2em
-        margin: 8px 0
+        margin-bottom: 0.75rem
 
-    .vue-logo
-        width: 80px
-        height: auto
+    .main
+        max-width: 700px
+        margin-left: auto
+        margin-right: auto
 
-    .indent
-        margin: 0 2em
+        .chapter
+            position: relative
+            margin-bottom: 2rem
 
-    .head
-        margin: 0 0.5em 0 0
+        .vue-logo
+            width: 80px
+            height: auto
 </style>
