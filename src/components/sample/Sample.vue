@@ -51,11 +51,11 @@ export default class Sample extends Vue {
     /**
      * イメージ列挙
      */
-    protected imgs: Imgs = {
+    protected imgs = {
         'vue-logo': require('@/resources/img/vue-logo.png')
-    };
+    } as Imgs;
 
-    protected text: string = 'Hello Vue.';
+    protected text = 'Hello Vue.';
 
     /**
      * 算術プロパティ例

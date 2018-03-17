@@ -65,7 +65,7 @@ function add_page() {
     echo "    /**"                                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "     * GetUrlParams"                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "     */"                                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "    const params: Params = UrlUtil.getUrlParams();"                        >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "    const params = UrlUtil.getUrlParams();"                                >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo ""                                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "    /**"                                                                   >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "     * Mount vue root"                                                     >> "./src/scripts/entry/${filepath}${filename}.ts"
@@ -129,7 +129,7 @@ function add_vue() {
     echo "@Component"                                                >> "./src/components/${filepath}${filename}.vue"
     if [ "$is_root" = "true" ]; then
     echo "export default class ${filename} extends RootVue {"        >> "./src/components/${filepath}${filename}.vue"
-    echo "    public title: string = '';"                            >> "./src/components/${filepath}${filename}.vue"
+    echo "    public title = '';"                                    >> "./src/components/${filepath}${filename}.vue"
     echo ""                                                          >> "./src/components/${filepath}${filename}.vue"
     echo "    protected beforeCreate(): void {"                      >> "./src/components/${filepath}${filename}.vue"
     echo "        VueUtil.registerComponents([]);"                   >> "./src/components/${filepath}${filename}.vue"
