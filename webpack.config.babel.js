@@ -57,22 +57,22 @@ const config = {
             { test: /\.pug$/, loader: 'pug-loader' },
             { test: /\.css$/, loader:
                 process.env.NODE_ENV === 'production'?
-                    'vue-style-loader!css-loader':
-                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true'
+                    'style-loader!css-loader':
+                    'style-loader?sourceMap=true!css-loader?sourceMap=true'
             },
             { test: /\.sass$/, loader:
                 process.env.NODE_ENV === 'production'?
-                    'vue-style-loader!css-loader!resolve-url-loader!sass-loader?indentedSyntax'
+                    'style-loader!css-loader!resolve-url-loader!sass-loader?indentedSyntax'
                         + '&includePaths[]=src/styles':
-                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                    'style-loader?sourceMap=true!css-loader?sourceMap=true!'
                         + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
                         + '&includePaths[]=src/styles'
             },
             { test: /\.scss$/, loader:
                 process.env.NODE_ENV === 'production'?
-                    'vue-style-loader!css-loader!resolve-url-loader!sass-loader'
+                    'style-loader!css-loader!resolve-url-loader!sass-loader'
                         + '?includePaths[]=src/styles':
-                    'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                    'style-loader?sourceMap=true!css-loader?sourceMap=true!'
                         + 'resolve-url-loader!sass-loader?sourceMap=true'
                         + '&includePaths[]=src/styles'
             },
