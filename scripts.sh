@@ -55,7 +55,7 @@ function add_page() {
 
     # add ts
     touch "./src/scripts/entry/${filepath}${filename}.ts"
-    echo "import ${pagename} from '@/components/entry/${filepath}/${pagename}.vue';" >> "./src/scripts/entry/${filepath}${filename}.ts"
+    echo "import ${pagename} from '@/components/entry/${filepath}${pagename}.vue';" >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "import UrlUtil, { Params } from '@/scripts/util/UrlUtil';"                 >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo ""                                                                          >> "./src/scripts/entry/${filepath}${filename}.ts"
     echo "/**"                                                                       >> "./src/scripts/entry/${filepath}${filename}.ts"
