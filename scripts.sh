@@ -5,10 +5,12 @@ function clean() {
 }
 
 function build() {
+    export NODE_ENV='production'
     clean && $(npm bin)/webpack
 }
 
 function dev() {
+    export NODE_ENV='development'
     $(npm bin)/webpack-dev-server --inline --hot
 }
 
