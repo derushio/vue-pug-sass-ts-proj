@@ -80,7 +80,7 @@ export default class Sample extends Vue {
      * モーダル
      */
     private showModal(): void {
-        this.$modal.open({component: Sample, hasModalCard: false});
+        this.$modal.open({component: Sample});
     }
 }
 </script>
