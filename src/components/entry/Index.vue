@@ -19,7 +19,8 @@ Vue.use(Buefy);
  */
 @Component
 export default class Index extends RootVue {
-    public title = 'index';
+    public title = 'Sample';
+    public subtitle = 'Index';
 
     protected beforeCreate(): void {
         // Inner Vue 登録
