@@ -39,4 +39,8 @@ export default class Index extends RootVue {
 @import 'all'
 
 .vue-index
+    section.main
+        max-width: 800px
+        margin-left: auto
+        margin-right: auto
 </style>
