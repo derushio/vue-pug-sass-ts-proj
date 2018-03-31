@@ -5,6 +5,7 @@
 * [pug](https://pugjs.org/)
 * [sass](http://sass-lang.com/)
 * [TypeScript](https://www.typescriptlang.org/)
+* [Buefy](https://buefy.github.io)
 
 ## 使用方法
 1. 本プロジェクトをclone
