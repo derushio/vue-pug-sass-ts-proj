@@ -1,6 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
-import addpage from './webpack.addpage.babel'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+
+import addpage from './webpack.addpage.babel';
 
 /**
  * port
@@ -21,10 +23,10 @@ const outputFileName = 'bundle';
  * Webpack Config
  */
 const config = {
+    mode: process.env.NODE_ENV,
+
     context: contextPath,
-
     entry: {},
-
     output: {
         path: distPath,
         filename: '[name].' + outputFileName + '.js',
@@ -52,16 +54,16 @@ const config = {
     },
 
     module: {
-        loaders: [
+        rules: [
             { test: /\.html$/, loader: 'html-loader' },
             { test: /\.pug$/, loader: 'pug-loader' },
             { test: /\.css$/, loader:
-                process.env.NODE_ENV === 'production'?
+                process.env.NODE_ENV == 'production'?
                     'style-loader!css-loader':
                     'style-loader?sourceMap=true!css-loader?sourceMap=true'
             },
             { test: /\.sass$/, loader:
-                process.env.NODE_ENV === 'production'?
+                process.env.NODE_ENV == 'production'?
                     'style-loader!css-loader!resolve-url-loader!sass-loader?indentedSyntax'
                         + '&includePaths[]=src/styles':
                     'style-loader?sourceMap=true!css-loader?sourceMap=true!'
@@ -69,7 +71,7 @@ const config = {
                         + '&includePaths[]=src/styles'
             },
             { test: /\.scss$/, loader:
-                process.env.NODE_ENV === 'production'?
+                process.env.NODE_ENV == 'production'?
                     'style-loader!css-loader!resolve-url-loader!sass-loader'
                         + '?includePaths[]=src/styles':
                     'style-loader?sourceMap=true!css-loader?sourceMap=true!'
@@ -81,8 +83,10 @@ const config = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        sass: process.env.NODE_ENV === 'production'?
-                            'vue-style-loader!css-loader!resolve-url-loader!sass-loader?indentedSyntax'
+                        sass: process.env.NODE_ENV == 'production'?
+                            'vue-style-loader!css-loader!'
+                                // なぜかsassのsourcemapが必要
+                                + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
                                 + '&includePaths[]=src/styles':
                             'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
                                 + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
@@ -122,15 +126,17 @@ if (process.env.NODE_ENV === 'production') {
                 NODE_ENV: '"production"'
             }
         }),
-        new webpack.optimize.UglifyJsPlugin({
+        new UglifyJsPlugin({
             sourceMap: false,
-            mangle: {
-                // Vue Componentが動かなくなる対策
-                keep_fnames: true
-            },
-            ecma: 8,
-            compress: {
-                warnings: false
+            uglifyOptions: {
+                mangle: {
+                    // Vue Componentが動かなくなる対策
+                    keep_fnames: true
+                },
+                ecma: 8,
+                compress: {
+                    warnings: false
+                }
             }
         })
     ]);
