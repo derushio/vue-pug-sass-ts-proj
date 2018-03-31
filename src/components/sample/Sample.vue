@@ -40,6 +40,7 @@
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
+import SampleModal from '@/components/sample/SampleModal.vue';
 
 /**
  * Vue Component
@@ -54,6 +55,10 @@ export default class Sample extends Vue {
     } as Imgs;
 
     protected text = 'Hello Vue.';
+
+    protected beforeCreate(): void {
+        VueUtil.registerComponents([SampleModal]);
+    }
 
     /**
      * 算術プロパティ例
@@ -80,7 +85,7 @@ export default class Sample extends Vue {
      * モーダル
      */
     private showModal(): void {
-        this.$modal.open({component: Sample});
+        this.$modal.open({component: SampleModal});
     }
 }
 </script>
