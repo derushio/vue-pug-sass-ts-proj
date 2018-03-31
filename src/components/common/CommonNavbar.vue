@@ -64,8 +64,18 @@ export default class CommonNavbar extends Vue {
     protected menus?: NavbarMenuItem[];
     @Prop({type: Array})
     protected submenus?: NavbarMenuItem[];
+    @Prop({type: Boolean, default: () => false})
+    protected isFixed?: boolean;
 
     protected showNavMenu = false;
+
+    protected beforeMount(): void {
+        if (this.isFixed) {
+            document.getElementsByTagName('html')[0]
+                .classList.add('has-navbar-fixed-top');
+        }
+    }
+
     protected invertShowNavMenu() {
         this.showNavMenu = !this.showNavMenu;
     }
