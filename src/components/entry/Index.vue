@@ -1,13 +1,17 @@
 <template lang='pug'>
 .vue-index
     .reactive-title {{ reactiveTitle() }}
-    sample
+    common-navbar.is-light
+
+    section.main.section
+        sample
 </template>
 
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
 import VueUtil from '@/scripts/util/VueUtil';
 import RootVue from '@/components/base/RootVue';
+import CommonNavbar from '@/components/common/CommonNavbar.vue';
 import Sample from '@/components/sample/Sample.vue';
 
 import Buefy from 'buefy';
@@ -24,7 +28,7 @@ export default class Index extends RootVue {
 
     protected beforeCreate(): void {
         // Inner Vue 登録
-        VueUtil.registerComponents([Sample]);
+        VueUtil.registerComponents([CommonNavbar, Sample]);
     }
 }
 </script>
