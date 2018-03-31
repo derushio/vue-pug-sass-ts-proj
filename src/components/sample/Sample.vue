@@ -1,18 +1,14 @@
 <template lang='pug'>
 .vue-sample
-    header.hero.is-dark
-        .hero-body
-            .container
-                h1.title Sample
-
-    section.main.section
+    .vue-functions
+        h3 Vue 機能
         .chapter
-            h2 画像の読み込み
+            h4 画像の読み込み
             .has-text-centered
                 img.vue-logo(v-bind:src='imgs["vue-logo"]')
 
         .chapter
-            h2 データバインド
+            h4 データバインド
             .indent
                 b-field(label='INPUT')
                     b-input(v-model='text')
@@ -20,7 +16,7 @@
                     b-input(v-model='text' readonly)
 
         .chapter
-            h2 算術プロパティ
+            h4 算術プロパティ
             .indent
                 .columns
                     .column.is-3: span 算術プロパティ:
@@ -30,8 +26,10 @@
                     .column.is-3: span メソッド:
                     .column: span {{ method() }}
 
+    .buefy-components
+        h3 Buefy コンポーネント
         .chapter
-            h2 Buefy コンポーネント
+            h4 dialog / modal
             .columns
                 .column.is-harf.has-text-centered
                     a.button.is-primary(@click='alert') Launch alert
@@ -49,7 +47,7 @@ import VueUtil from '@/scripts/util/VueUtil';
 @Component
 export default class Sample extends Vue {
     /**
-     * イメージ列挙
+     * 画像読み込み
      */
     protected imgs = {
         'vue-logo': require('@/resources/img/vue-logo.png')
@@ -93,23 +91,19 @@ export default class Sample extends Vue {
 .vue-sample
     background-color: $white
 
-    h1
-        font-size: 1.4em
+    h3
+        font-size: 1.5em
+        margin-bottom: 0.75rem
 
-    h2
+    h4
         font-size: 1.2em
         margin-bottom: 0.75rem
 
-    .main
-        max-width: 700px
-        margin-left: auto
-        margin-right: auto
+    .chapter
+        position: relative
+        margin-bottom: 2rem
 
-        .chapter
-            position: relative
-            margin-bottom: 2rem
-
-        .vue-logo
-            width: 80px
-            height: auto
+    .vue-logo
+        width: 80px
+        height: auto
 </style>
