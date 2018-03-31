@@ -29,12 +29,17 @@
     .buefy-components
         h3 Buefy コンポーネント
         .chapter
-            h4 dialog / modal
-            .columns
-                .column.is-harf.has-text-centered
-                    a.button.is-primary(@click='alert') Launch alert
-                .column.is-harf.has-text-centered
+            h4 dialog / modal / toast / snackbar
+            .columns.is-multiline
+                .column.is-6.has-text-centered
+                    a.button.is-primary(@click='showAlert') Show alert
+                .column.is-6.has-text-centered
                     a.button.is-primary(@click='showModal') Show Modal
+
+                .column.is-6.has-text-centered
+                    a.button.is-primary(@click='showToast') Show toast
+                .column.is-6.has-text-centered
+                    a.button.is-primary(@click='showSnackbar') Show snackbar
 </template>
 
 <script lang='ts'>
@@ -77,15 +82,29 @@ export default class Sample extends Vue {
     /**
      * アラート
      */
-    private alert(): void {
-        this.$dialog.alert('Everything looks fine!');
+    protected showAlert(): void {
+        this.$dialog.alert('Show alert !!');
     }
 
     /**
      * モーダル
      */
-    private showModal(): void {
+    protected showModal(): void {
         this.$modal.open({component: SampleModal});
+    }
+
+    /**
+     * トースト
+     */
+    protected showToast(): void {
+        this.$toast.open('Show toast !!');
+    }
+
+    /**
+     * スナックバー
+     */
+    protected showSnackbar(): void {
+        this.$snackbar.open('Show snackbar !!');
     }
 }
 </script>
