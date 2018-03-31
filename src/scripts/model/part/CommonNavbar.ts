@@ -3,5 +3,7 @@ export interface NavbarMenuItem {
     icon?: string;
 
     text: string;
+    onClick?: () => any;
+
     children?: NavbarMenuItem[];
 }

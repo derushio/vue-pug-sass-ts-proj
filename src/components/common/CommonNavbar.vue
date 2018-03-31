@@ -14,16 +14,16 @@ header.vue-common-navbar.navbar(
             .navbar-start
                 template(v-for='menu in menus')
                     .navbar-item.has-dropdown.is-hoverable(v-if='menu.children != null')
-                        a.navbar-link.icon-text
+                        a.navbar-link.icon-text(@click='doAction(menu.onClick)')
                             b-icon(v-if='menu.icon != null' :pack='menu.pack || "mdi"'
                                 :icon='menu.icon')
                             span {{ menu.text }}
                         .navbar-dropdown
-                            a.navbar-item.icon-text(v-for='child in menu.children')
+                            a.navbar-item.icon-text(v-for='child in menu.children' @click='doAction(child.onClick)')
                                 b-icon(v-if='child.icon != null' :pack='child.pack || "mdi"'
                                     :icon='child.icon')
                                 span {{ menu.text }}
-                    a.navbar-item.icon-text(v-if='menu.children == null')
+                    a.navbar-item.icon-text(v-if='menu.children == null' @click='doAction(menu.onClick)')
                         b-icon(v-if='menu.icon != null' :pack='menu.pack || "mdi"'
                                 :icon='menu.icon')
                         span {{ menu.text }}
@@ -31,16 +31,16 @@ header.vue-common-navbar.navbar(
             .navbar-end
                 template(v-for='menu in submenus')
                     .navbar-item.has-dropdown.is-hoverable(v-if='menu.children != null')
-                        a.navbar-link.icon-text
+                        a.navbar-link.icon-text(@click='doAction(menu.onClick)')
                             b-icon(v-if='menu.icon != null' :pack='menu.pack || "mdi"'
                                 :icon='menu.icon')
                             span {{ menu.text }}
                         .navbar-dropdown
-                            a.navbar-item.icon-text(v-for='child in menu.children')
+                            a.navbar-item.icon-text(v-for='child in menu.children' @click='doAction(child.onClick)')
                                 b-icon(v-if='child.icon != null' :pack='child.pack || "mdi"'
                                     :icon='child.icon')
                                 span {{ menu.text }}
-                    a.navbar-item.icon-text(v-if='menu.children == null')
+                    a.navbar-item.icon-text(v-if='menu.children == null' @click='doAction(menu.onClick)')
                         b-icon(v-if='menu.icon != null' :pack='menu.pack || "mdi"'
                                 :icon='menu.icon')
                         span {{ menu.text }}
@@ -68,6 +68,14 @@ export default class CommonNavbar extends Vue {
     protected showNavMenu = false;
     protected invertShowNavMenu() {
         this.showNavMenu = !this.showNavMenu;
+    }
+
+    protected doAction(action: () => any | undefined): void {
+        if (action == null) {
+            return;
+        }
+
+        action();
     }
 }
 </script>
