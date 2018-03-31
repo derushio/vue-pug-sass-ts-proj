@@ -17,6 +17,6 @@
     },
     "includes": [
         "node_modules/@types/**/*.d.ts",
-        "src/scripts/dts/**/*.d.ts"
+        "src/scripts/type/**/*.d.ts"
     ]
 }
