@@ -48,9 +48,10 @@ Vueのコンポーネントを `./scripts.sh` から追加できます
         - pugディレクトリ
         - エントリポイントディレクトリ
     * styles/
-        - 汎用sassディレクトリ
-        entry/
-            - エントリポイントディレクトリ
+        * _all.sass RootVueから読むべき全て入りSASS
+        * _variable.sass ComponentVueから読むべき変数のみSASS
+        * _buefy-customize.sass BuefyをカスタマイズしているSASS
+        * _common.sass どこでも使うCSSを入れておくSASS
     * scripts/
         - 汎用typescriptディレクトリ
         entry/
