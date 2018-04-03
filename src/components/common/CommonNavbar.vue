@@ -22,7 +22,7 @@ header.vue-common-navbar.navbar(
                             a.navbar-item.icon-text(v-for='child in menu.children' @click='doAction(child.onClick)')
                                 b-icon(v-if='child.icon != null' :pack='child.pack || "mdi"'
                                     :icon='child.icon')
-                                span {{ menu.text }}
+                                span {{ child.text }}
                     a.navbar-item.icon-text(v-if='menu.children == null' @click='doAction(menu.onClick)')
                         b-icon(v-if='menu.icon != null' :pack='menu.pack || "mdi"'
                                 :icon='menu.icon')
@@ -39,7 +39,7 @@ header.vue-common-navbar.navbar(
                             a.navbar-item.icon-text(v-for='child in menu.children' @click='doAction(child.onClick)')
                                 b-icon(v-if='child.icon != null' :pack='child.pack || "mdi"'
                                     :icon='child.icon')
-                                span {{ menu.text }}
+                                span {{ child.text }}
                     a.navbar-item.icon-text(v-if='menu.children == null' @click='doAction(menu.onClick)')
                         b-icon(v-if='menu.icon != null' :pack='menu.pack || "mdi"'
                                 :icon='menu.icon')
