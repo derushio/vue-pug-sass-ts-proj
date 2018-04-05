@@ -7,5 +7,5 @@ declare module '*.vue' {
  * Vueコンポーネント内でImgリソースを列挙するための型
  */
 declare interface Imgs {
-    [keys: string]: string
+    [keys: string]: string | string[];
 }
