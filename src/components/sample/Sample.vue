@@ -1,14 +1,20 @@
 <template lang='pug'>
 .vue-sample
     .vue-functions
-        h3 Vue 機能
+        h3: .icon-text
+            b-icon(icon='vuejs')
+            span Vue 機能
         .chapter
-            h4 画像の読み込み
+            h4: .icon-text
+                b-icon(icon='image')
+                span 画像の読み込み
             .has-text-centered
                 img.vue-logo(v-bind:src='imgs["vue-logo"]')
 
         .chapter
-            h4 データバインド
+            h4: .icon-text
+                b-icon(icon='rotate-3d')
+                span 双方向データバインド
             .indent
                 b-field(label='INPUT')
                     b-input(v-model='text')
@@ -16,7 +22,9 @@
                     b-input(v-model='text' readonly)
 
         .chapter
-            h4 算術プロパティ
+            h4: .icon-text
+                b-icon(icon='function')
+                span 算術プロパティ
             .indent
                 .columns
                     .column.is-3: span 算術プロパティ:
@@ -27,7 +35,9 @@
                     .column: span {{ method() }}
 
     .buefy-components
-        h3 Buefy コンポーネント
+        h3: .icon-text
+            b-icon(icon='package-variant')
+            span Buefy コンポーネント
         .chapter
             h4 dialog / modal / toast / snackbar
             .columns.is-multiline
