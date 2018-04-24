@@ -24,7 +24,7 @@ export default class SampleModal extends Vue {
 </script>
 
 <style lang='sass' scoped>
-@import 'variable'
+@import 'entry/variable'
 
 .vue-sample-modal
     background: $white
