@@ -1,4 +1,4 @@
-import Index from '@/components/entry/$_FILEPATH_$/$_FILENAME_$.vue';
+import $_PAGENAME_$ from '@/components/entry/$_FILEPATH_$$_PAGENAME_$.vue';
 import UrlUtil, { Params } from '@/scripts/util/UrlUtil';
 
 /**
