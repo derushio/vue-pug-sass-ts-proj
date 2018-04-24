@@ -10,7 +10,7 @@ import VueUtil from '@/scripts/util/VueUtil';
  * Vue Component
  */
 @Component
-export default class _FILENAME_ extends Vue {
+export default class $_FILENAME_$ extends Vue {
 }
 </script>
 
