@@ -1,5 +1,5 @@
 <template lang='pug'>
-.vue-$_PAGENAME_$
+.vue-$_FILENAME_$
 </template>
 
 <script lang='ts'>
@@ -10,12 +10,12 @@ import VueUtil from '@/scripts/util/VueUtil';
  * Vue Component
  */
 @Component
-export default class $_FILENAME_$ extends Vue {
+export default class $_PAGENAME_$ extends Vue {
 }
 </script>
 
 <style lang='sass' scoped>
 @import 'entry/variable'
 
-.vue-$_PAGENAME_$
+.vue-$_FILENAME_$
 </style>

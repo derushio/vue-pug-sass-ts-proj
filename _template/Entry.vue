@@ -1,5 +1,5 @@
 <template lang='pug'>
-.vue-$_PAGENAME_$
+.vue-$_FILENAME_$
     .reactive-title {{ reactiveTitle() }}
 </template>
 
@@ -15,9 +15,9 @@ Vue.use(Buefy);
  * Vue Component
  */
 @Component
-export default class $_FILENAME_$ extends RootVue {
+export default class $_PAGENAME_$ extends RootVue {
     public title = '';
-    public subtitle = '$_FILENAME_$';
+    public subtitle = '$_PAGENAME_$';
 
     protected beforeCreate(): void {
         // Inner Vue 登録
@@ -29,5 +29,5 @@ export default class $_FILENAME_$ extends RootVue {
 <style lang='sass'>
 @import 'entry/all'
 
-.vue-$_PAGENAME_$
+.vue-$_FILENAME_$
 </style>

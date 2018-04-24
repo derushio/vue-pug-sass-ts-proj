@@ -13,7 +13,7 @@ async function init(): Promise<void> {
     /**
      * Mount vue root
      */
-    new $_FILENAME_$().$mount('#main');
+    new $_PAGENAME_$().$mount('#main');
 }
 
 init();
