@@ -1,3 +1,6 @@
+/**
+ * ArrayUtil
+ */
 export default class ArrayUtil {
     private constructor() {}
 
@@ -5,6 +8,11 @@ export default class ArrayUtil {
      * Arrayを生成
      */
     public static gen(min: number, max: number): number[] {
-        return [...Array(max-min+1)].map((_, i: number) => { return i+min });
+        const array = [];
+        for (let i = min; i <= max; i++) {
+            array.push(i);
+        }
+
+        return array;
     }
 }
