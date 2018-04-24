@@ -17,7 +17,6 @@ import CommonHero from '@/components/common/CommonHero.vue';
 import Sample from '@/components/sample/Sample.vue';
 
 import Buefy from 'buefy';
-
 Vue.use(Buefy);
 
 /**
