@@ -31,7 +31,7 @@ const config = {
         path: distPath,
         filename: '[name].' + outputFileName + '.js',
         // mark /dist/ folder as a public path so index.html can reach it
-        publicPath: '/'
+        publicPath: (process.env.NODE_ENV == 'production')? './': '/'
     },
 
     /**
