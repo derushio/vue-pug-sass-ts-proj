@@ -36,15 +36,24 @@ function add_page() {
 
     # add pug
     mkdir -p "./src/pages/${filepath}"
-    cp "./_template/Entry.pug" "./src/pages/${filepath}${filename}.pug"
+    pug=`cat "./_template/Entry.pug"`
+    pug=`echo "${pug//\\$_FILENAME_\\$/${filename}}"`
+    pug=`echo "${pug//\\$_PAGENAME_\\$/${pagename}}"`
+    echo "${pug}" > "./src/pages/${filepath}${filename}.pug"
 
     # add entry vue
     mkdir -p "./src/components/entry/${filepath}"
-    cp "./_template/Entry.vue" "./src/components/entry/${filepath}${pagename}.vue"
+    vue=`cat "./_template/Entry.vue"`
+    vue=`echo "${vue//\\$_FILENAME_\\$/${filename}}"`
+    vue=`echo "${vue//\\$_PAGENAME_\\$/${pagename}}"`
+    echo "${vue}" > "./src/components/entry/${filepath}${pagename}.vue"
 
     # add ts
     mkdir -p "./src/scripts/entry/${filepath}"
-    cp "./_template/Entry.ts" "./src/scripts/entry/${filepath}${filename}.ts"
+    ts=`cat "./_template/Entry.ts"`
+    ts=`echo "${ts//\\$_FILENAME_\\$/${filename}}"`
+    ts=`echo "${ts//\\$_PAGENAME_\\$/${pagename}}"`
+    echo "${ts}" > "./src/scripts/entry/${filepath}${filename}.ts"
 }
 
 ###
@@ -70,8 +79,11 @@ function add_vue() {
     # mkdir
 
     # add vue
-    mkdir -p "./src/components/${filepath}"
-    cp "./_template/Vue.vue" "./src/components/${filepath}${pagename}.vue"
+    mkdir -p "./src/components/entry/${filepath}"
+    vue=`cat "./_template/Vue.vue"`
+    vue=`echo "${vue//\\$_FILENAME_\\$/${filename}}"`
+    vue=`echo "${vue//\\$_PAGENAME_\\$/${pagename}}"`
+    echo "${vue}" > "./src/components/${filepath}${pagename}.vue"
 }
 
 if [ -z ${2+UNDEF} ]; then
