@@ -98,7 +98,7 @@ export default class CommonNavbar extends Vue {
 </script>
 
 <style lang='sass' scoped>
-@import 'variable'
+@import 'entry/variable'
 
 .vue-common-navbar
 </style>

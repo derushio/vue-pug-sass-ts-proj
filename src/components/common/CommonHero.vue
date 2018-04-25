@@ -23,7 +23,7 @@ export default class CommonHero extends Vue {
 </script>
 
 <style lang='sass' scoped>
-@import 'variable'
+@import 'entry/variable'
 
 .vue-common-hero
 </style>
