@@ -23,5 +23,4 @@ export default class ArrayUtil {
 
         return array;
     }
-
 }
