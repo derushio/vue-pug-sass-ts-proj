@@ -141,7 +141,7 @@ if (process.env.NODE_ENV === 'production') {
     config.plugins = (config.plugins || []).concat([
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: 'production'
+                NODE_ENV: '"production"'
             }
         })
     ]);
@@ -150,7 +150,7 @@ if (process.env.NODE_ENV === 'production') {
     config.plugins = (config.plugins || []).concat([
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: 'development'
+                NODE_ENV: '"development"'
             }
         }),
     ]);
