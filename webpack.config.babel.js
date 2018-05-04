@@ -105,55 +105,38 @@ const config = {
         ]
     },
 
+    devtool: (process.env.NODE_ENV == 'production')? false: '#source-map',
+
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
-                sourceMap: false,
+                sourceMap: (process.env.NODE_ENV == 'production')? false: true,
                 uglifyOptions: {
-                    mangle: {
-                        // Vue Componentが動かなくなる対策
-                        keep_fnames: true
-                    },
                     ecma: 8,
                     compress: {
                         warnings: false
+                    },
+                    mangle: {
+                        // Vue Componentが動かなくなる対策
+                        keep_fnames: true
                     }
                 }
             })
         ]
     },
 
-    plugins: []
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: `"${process.env.NODE_ENV}"`
+            }
+        })
+    ]
 };
 
 /**
  * add pages
  */
 addpage(config, 'index', '/', './static/favicon.ico');
-
-/**
- * When use in production (npm run build)
- */
-if (process.env.NODE_ENV === 'production') {
-    /**
-     * https://vuejs.org/guide/deployment.html
-     */
-    config.plugins = (config.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        })
-    ]);
-} else {
-    config.devtool = '#eval-source-map';
-    config.plugins = (config.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"development"'
-            }
-        }),
-    ]);
-};
 
 module.exports = config;
