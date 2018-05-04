@@ -88,6 +88,10 @@ function add_vue() {
     echo "${vue}" >> "./src/components/${filepath}${pagename}.vue"
 }
 
+function build_typedoc() {
+    typedoc --name "$1" --mode 'file' --out './document/typedoc' './src/scripts'
+}
+
 if [ -z ${2+UNDEF} ]; then
     $1
 else
