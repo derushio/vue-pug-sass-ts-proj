@@ -139,4 +139,4 @@ const config = {
  */
 addpage(config, 'index', '/', './static/favicon.ico');
 
-module.exports = config;
+export default config;
