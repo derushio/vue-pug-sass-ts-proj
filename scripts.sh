@@ -80,7 +80,7 @@ function add_vue() {
     fi
 
     # add vue
-    mkdir -p "./src/components/entry/${filepath}"
+    mkdir -p "./src/components/${filepath}"
     vue=`cat "./_template/Vue.vue"`
     vue=`echo "${vue//\\$_FILEPATH_\\$/${filepath}}"`
     vue=`echo "${vue//\\$_FILENAME_\\$/${filename}}"`
