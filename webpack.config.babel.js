@@ -30,7 +30,7 @@ const config = {
         path: distPath,
         filename: `[name].bundle.js`,
         // mark /dist/ folder as a public path so index.html can reach it
-        publicPath: (process.env.NODE_ENV == 'production')? './': '/'
+        publicPath: '/'
     },
 
     /**
