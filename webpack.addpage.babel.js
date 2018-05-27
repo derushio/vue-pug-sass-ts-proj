@@ -18,7 +18,9 @@ const ENTRY_SCRIPT_PATH = path.resolve(SRC_PATH, 'scripts/entry');
 export default function addpage(config, page, distpath, faviconpath) {
     const dist = distpath.replace(/^\.?\//, '');
     const favicon = faviconpath.replace(/^\.\//, '');
-    const scriptpath = (dist == '')? 'index': `${dist}/${dist}`;
+    const scriptpath = dist == ''
+        ? 'index'
+        : `${dist.replace(/^.*?\/(.*)/, '$1')}/${dist}`;
 
     config.entry[scriptpath] = path.resolve(ENTRY_SCRIPT_PATH, `${page}.ts`);
     config.plugins.push(
