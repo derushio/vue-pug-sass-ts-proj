@@ -29,7 +29,7 @@ const config = {
     entry: {},
     output: {
         path: distPath,
-        filename: '[name].' + outputFileName + '.js',
+        filename: `[name].${outputFileName}.js`,
         // mark /dist/ folder as a public path so index.html can reach it
         publicPath: (process.env.NODE_ENV == 'production')? './': '/'
     },
@@ -46,7 +46,7 @@ const config = {
     },
 
     resolve: {
-        extensions: ['.js', '.ts', '.json' ,'.vue'],
+        extensions: [ '.js', '.ts', '.json' ,'.vue' ],
         alias: {
             '@': path.resolve(srcPath),
             'vue$': 'vue/dist/vue.esm.js'
