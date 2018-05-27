@@ -16,7 +16,7 @@ const ENTRY_SCRIPT_PATH = path.resolve(SRC_PATH, 'scripts/entry');
  * @return {any} config
  */
 export default function addpage(config, page, distpath, faviconpath) {
-    const dist = distpath.replace(/^(\.)?\//, '');
+    const dist = distpath.replace(/^\.?\//, '');
     const favicon = faviconpath.replace(/^\.\//, '');
     const scriptpath = (dist == '')? 'index': `${dist}/${dist}`;
 
@@ -25,9 +25,7 @@ export default function addpage(config, page, distpath, faviconpath) {
         new htmlWebpackPlugin({
             filename: path.join(DIST_PATH, dist, 'index.html'),
             template: path.join(SRC_PAGE_PATH, `${page}.pug`),
-            favicon: path.join(SRC_PATH, `${faviconpath}`),
-            inject: 'body',
-            chunks: [ scriptpath ]
+            favicon: path.join(SRC_PATH, faviconpath)
         })
     );
 
