@@ -134,12 +134,12 @@ const config = {
     },
 
     plugins: [
-        new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: `"${process.env.NODE_ENV}"`
             }
-        })
+        }),
+        new VueLoaderPlugin()
     ],
 
     optimization: {

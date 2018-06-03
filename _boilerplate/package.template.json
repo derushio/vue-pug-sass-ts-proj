@@ -30,7 +30,7 @@
         "style-loader": "^0.21.0",
         "ts-loader": "^4.1.0",
         "typedoc": "^0.11.1",
-        "typescript": "^2.7.1",
+        "typescript": "^2.9.1",
         "uglifyjs-webpack-plugin": "^1.2.4",
         "url-loader": "^1.0.1",
         "vue": "^2.5.13",
