@@ -26,6 +26,7 @@ const isProduct = process.env.NODE_ENV == 'production';
  * Webpack Config
  */
 const config = {
+    target: 'web',
     mode: process.env.NODE_ENV,
 
     context: contextPath,
