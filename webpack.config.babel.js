@@ -36,7 +36,6 @@ const config = {
         // mark /dist/ folder as a public path so index.html can reach it
         publicPath: '/'
     },
-    externals: [ 'vue', 'buefy' ],
 
     /**
      * webpack-dev-server config
