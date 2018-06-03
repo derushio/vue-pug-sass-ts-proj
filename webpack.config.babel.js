@@ -1,5 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
+
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 import addpage from './webpack.addpage.babel';
@@ -54,44 +56,41 @@ const config = {
 
     module: {
         rules: [
-            { test: /\.html$/, loader: 'html-loader' },
-            { test: /\.pug$/, loader: 'pug-loader' },
-            { test: /\.css$/, loader:
-                process.env.NODE_ENV == 'production'?
-                    'style-loader!css-loader':
-                    'style-loader?sourceMap=true!css-loader?sourceMap=true'
+            { test: /\.html$/, use: [ 'html-loader' ] },
+            { test: /\.vue$/, use: [ 'vue-loader' ] },
+            {
+                test: /\.pug$/,
+                oneOf: [
+                    { resourceQuery: /^\?vue/, use: [ 'pug-plain-loader' ] },
+                    { use: [ 'raw-loader', 'pug-plain-loader' ] }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                        'vue-style-loader',
+                        { loader: 'css-loader', options: { sourceMap: (process.env.NODE_ENV != 'production') } }
+                ]
             },
             { test: /\.sass$/, loader:
-                process.env.NODE_ENV == 'production'?
-                    'style-loader!css-loader!resolve-url-loader!sass-loader?indentedSyntax'
-                        + '&includePaths[]=src/styles':
-                    'style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                process.env.NODE_ENV == 'production'
+                    ? 'vue-style-loader!css-loader!'
+                        // なぜかsourcemapが必要
+                        + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
+                        + '&includePaths[]=src/styles'
+                    : 'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
                         + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
                         + '&includePaths[]=src/styles'
             },
             { test: /\.scss$/, loader:
-                process.env.NODE_ENV == 'production'?
-                    'style-loader!css-loader!resolve-url-loader!sass-loader'
-                        + '?includePaths[]=src/styles':
-                    'style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                process.env.NODE_ENV == 'production'
+                    ? 'vue-style-loader!css-loader!'
+                        // なぜかsourcemapが必要
                         + 'resolve-url-loader!sass-loader?sourceMap=true'
                         + '&includePaths[]=src/styles'
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        sass: process.env.NODE_ENV == 'production'?
-                            'vue-style-loader!css-loader!'
-                                // なぜかsassのsourcemapが必要
-                                + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
-                                + '&includePaths[]=src/styles':
-                            'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
-                                + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
-                                + '&includePaths[]=src/styles'
-                    }
-                }
+                    : 'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
+                        + 'resolve-url-loader!sass-loader?sourceMap=true'
+                        + '&includePaths[]=src/styles'
             },
             {
                 test: /\.ts(x?)$/,
@@ -99,8 +98,7 @@ const config = {
                 options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
             { test: /\.(jp(e?)g|png|gif|svg)(\?v=\d+\.\d+\.\d+)?$/, loaders: 'file-loader?name=resources/img/[name].[ext]' },
-            { test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff&name=resources/font/[name].[ext]" },
-            { test: /\.(ttf|eot)(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?name=resources/font/[name].[ext]" }
+            { test: /\.(ttf|eot|woff(2)?)(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?name=resources/font/[name].[ext]" }
         ]
     },
 
@@ -125,6 +123,7 @@ const config = {
     },
 
     plugins: [
+        new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: `"${process.env.NODE_ENV}"`
