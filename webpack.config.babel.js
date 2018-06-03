@@ -28,7 +28,7 @@ const config = {
     entry: {},
     output: {
         path: distPath,
-        filename: `[name].bundle.js`,
+        filename: '[name].bundle.js',
         // mark /dist/ folder as a public path so index.html can reach it
         publicPath: '/'
     },
