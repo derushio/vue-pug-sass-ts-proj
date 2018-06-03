@@ -32,10 +32,11 @@ const config = {
     entry: {},
     output: {
         path: distPath,
-        filename: '[name].bundle.js',
+        filename: '[name]-[hash].bundle.js',
         // mark /dist/ folder as a public path so index.html can reach it
         publicPath: '/'
     },
+    externals: [ 'vue', 'buefy' ],
 
     /**
      * webpack-dev-server config
@@ -129,7 +130,14 @@ const config = {
         ]
     },
 
-    devtool: (process.env.NODE_ENV == 'production')? false: '#source-map',
+    plugins: [
+        new VueLoaderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: `"${process.env.NODE_ENV}"`
+            }
+        })
+    ],
 
     optimization: {
         minimizer: [
@@ -149,14 +157,7 @@ const config = {
         ]
     },
 
-    plugins: [
-        new VueLoaderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: `"${process.env.NODE_ENV}"`
-            }
-        })
-    ]
+    devtool: (process.env.NODE_ENV == 'production')? false: '#source-map'
 };
 
 /**
