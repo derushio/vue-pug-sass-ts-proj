@@ -20,7 +20,7 @@ const srcPath = path.resolve(__dirname, 'src');
 const srcPagePath = path.resolve(srcPath, 'pages');
 const entryScriptsPath = path.resolve(srcPath, 'scripts/entry');
 
-const isProduct = process.env.NODE_ENV != 'production';
+const isProduct = process.env.NODE_ENV == 'production';
 
 /**
  * Webpack Config
@@ -70,16 +70,16 @@ const config = {
             {
                 test: /\.css$/,
                 use: [
-                    { loader: 'vue-style-loader', options: { sourceMap: isProduct } },
-                    { loader: 'css-loader', options: { sourceMap: isProduct } },
-                    { loader: 'resolve-url-loader', options: { sourceMap: isProduct } },
+                    { loader: 'vue-style-loader', options: { sourceMap: !isProduct } },
+                    { loader: 'css-loader', options: { sourceMap: !isProduct } },
+                    { loader: 'resolve-url-loader', options: { sourceMap: !isProduct } },
                 ]
             },
             { test: /\.sass$/,
                 use: [
-                    { loader: 'vue-style-loader', options: { sourceMap: isProduct } },
-                    { loader: 'css-loader', options: { sourceMap: isProduct } },
-                    { loader: 'resolve-url-loader', options: { sourceMap: isProduct } },
+                    { loader: 'vue-style-loader', options: { sourceMap: !isProduct } },
+                    { loader: 'css-loader', options: { sourceMap: !isProduct } },
+                    { loader: 'resolve-url-loader', options: { sourceMap: !isProduct } },
                     {
                         loader: 'sass-loader',
                         options: {
@@ -92,9 +92,9 @@ const config = {
             },
             { test: /\.scss$/,
                 use: [
-                    { loader: 'vue-style-loader', options: { sourceMap: isProduct } },
-                    { loader: 'css-loader', options: { sourceMap: isProduct } },
-                    { loader: 'resolve-url-loader', options: { sourceMap: isProduct } },
+                    { loader: 'vue-style-loader', options: { sourceMap: !isProduct } },
+                    { loader: 'css-loader', options: { sourceMap: !isProduct } },
+                    { loader: 'resolve-url-loader', options: { sourceMap: !isProduct } },
                     {
                         loader: 'sass-loader',
                         options: {
@@ -141,7 +141,7 @@ const config = {
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
-                sourceMap: (process.env.NODE_ENV == 'production')? false: true,
+                sourceMap: !isProduct,
                 uglifyOptions: {
                     ecma: 8,
                     compress: {
@@ -156,7 +156,7 @@ const config = {
         ]
     },
 
-    devtool: (process.env.NODE_ENV == 'production')? false: '#source-map'
+    devtool: isProduct? false: '#source-map'
 };
 
 /**
