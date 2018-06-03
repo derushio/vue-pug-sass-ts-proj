@@ -20,6 +20,8 @@ const srcPath = path.resolve(__dirname, 'src');
 const srcPagePath = path.resolve(srcPath, 'pages');
 const entryScriptsPath = path.resolve(srcPath, 'scripts/entry');
 
+const isProduct = process.env.NODE_ENV != 'production';
+
 /**
  * Webpack Config
  */
@@ -68,37 +70,62 @@ const config = {
             {
                 test: /\.css$/,
                 use: [
-                        'vue-style-loader',
-                        { loader: 'css-loader', options: { sourceMap: (process.env.NODE_ENV != 'production') } }
+                    { loader: 'vue-style-loader', options: { sourceMap: isProduct } },
+                    { loader: 'css-loader', options: { sourceMap: isProduct } },
+                    { loader: 'resolve-url-loader', options: { sourceMap: isProduct } },
                 ]
             },
-            { test: /\.sass$/, loader:
-                process.env.NODE_ENV == 'production'
-                    ? 'vue-style-loader!css-loader!'
-                        // なぜかsourcemapが必要
-                        + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
-                        + '&includePaths[]=src/styles'
-                    : 'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
-                        + 'resolve-url-loader!sass-loader?indentedSyntax&sourceMap=true'
-                        + '&includePaths[]=src/styles'
+            { test: /\.sass$/,
+                use: [
+                    { loader: 'vue-style-loader', options: { sourceMap: isProduct } },
+                    { loader: 'css-loader', options: { sourceMap: isProduct } },
+                    { loader: 'resolve-url-loader', options: { sourceMap: isProduct } },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            indentedSyntax: true,
+                            sourceMap: true,
+                            includePaths: [ 'src/styles' ]
+                        }
+                    }
+                ]
             },
-            { test: /\.scss$/, loader:
-                process.env.NODE_ENV == 'production'
-                    ? 'vue-style-loader!css-loader!'
-                        // なぜかsourcemapが必要
-                        + 'resolve-url-loader!sass-loader?sourceMap=true'
-                        + '&includePaths[]=src/styles'
-                    : 'vue-style-loader?sourceMap=true!css-loader?sourceMap=true!'
-                        + 'resolve-url-loader!sass-loader?sourceMap=true'
-                        + '&includePaths[]=src/styles'
+            { test: /\.scss$/,
+                use: [
+                    { loader: 'vue-style-loader', options: { sourceMap: isProduct } },
+                    { loader: 'css-loader', options: { sourceMap: isProduct } },
+                    { loader: 'resolve-url-loader', options: { sourceMap: isProduct } },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            indentedSyntax: false,
+                            sourceMap: true,
+                            includePaths: [ 'src/styles' ]
+                        }
+                    }
+                ]
             },
             {
                 test: /\.ts(x?)$/,
                 loader: 'ts-loader',
                 options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
-            { test: /\.(jp(e?)g|png|gif|svg)(\?v=\d+\.\d+\.\d+)?$/, loaders: 'file-loader?name=resources/img/[name].[ext]' },
-            { test: /\.(ttf|eot|woff(2)?)(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader?name=resources/font/[name].[ext]" }
+            { test: /\.(jp(e?)g|png|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: { name: 'resources/img/[name].[ext]' }
+                    }
+                ]
+            },
+            { test: /\.(ttf|eot|woff(2)?)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: { name: 'resources/font/[name].[ext]' }
+                    }
+                ]
+            }
         ]
     },
 
