@@ -107,7 +107,7 @@ const config = {
             },
             {
                 test: /\.ts(x?)$/,
-                loader: 'ts-loader',
+                use: [ 'ts-loader' ],
                 options: { appendTsSuffixTo: [ /\.vue$/ ] }
             },
             { test: /\.(jp(e?)g|png|gif|svg)(\?v=\d+\.\d+\.\d+)?$/,
