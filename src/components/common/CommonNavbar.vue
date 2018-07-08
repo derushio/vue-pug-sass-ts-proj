@@ -5,8 +5,9 @@ header.vue-common-navbar.navbar(:class='{"is-fixed-top": isFixed}'
         .navbar-brand
             a.navbar-item(v-if='brandImg != "" || brand != ""'
                     @click='doAction(onBrandClick)')
-                img(v-if='brandImg != ""' :src='brandImg')
-                span(v-if='brand != ""') {{ brand }}
+                h1
+                    img(v-if='brandImg != ""' :src='brandImg' :alt='brandImgAlt')
+                    span(v-if='brand != ""') {{ brand }}
 
             .navbar-burger(:class='{"is-active": showNavMenu}'
                     @click='invertShowNavMenu')
@@ -64,6 +65,8 @@ export default class CommonNavbar extends Vue {
     protected brand?: string;
     @Prop({type: String, default: () => ''})
     protected brandImg?: string;
+    @Prop({type: String, default: () => ''})
+    protected brandImgAlt?: string;
     @Prop({type: Function, default: () => {}})
     protected onBrandClick?: () => any;
 
@@ -101,4 +104,7 @@ export default class CommonNavbar extends Vue {
 @import 'entry/variable'
 
 .vue-common-navbar
+    .navbar-brand
+        h1
+            font-size: 2em
 </style>
