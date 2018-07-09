@@ -51,8 +51,6 @@ header.vue-common-navbar.navbar(:class='{"is-fixed-top": isFixed}'
 
 <script lang='ts'>
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import VueUtil from '@/scripts/util/VueUtil';
-
 import { NavbarMenuItem } from '@/scripts/model/part/CommonNavbar';
 
 /**

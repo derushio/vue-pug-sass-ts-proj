@@ -5,10 +5,9 @@
 
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
-import VueUtil from '@/scripts/util/VueUtil';
+import Buefy from 'buefy';
 import RootVue from '@/components/base/RootVue';
 
-import Buefy from 'buefy';
 Vue.use(Buefy);
 
 /**
@@ -18,11 +17,6 @@ Vue.use(Buefy);
 export default class $_PAGENAME_$ extends RootVue {
     public title = '';
     public subtitle = '$_PAGENAME_$';
-
-    protected beforeCreate(): void {
-        // Inner Vue 登録
-        VueUtil.registerComponents([]);
-    }
 }
 </script>
 

@@ -54,13 +54,16 @@
 
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
-import VueUtil from '@/scripts/util/VueUtil';
 import SampleModal from '@/components/sample/SampleModal.vue';
 
 /**
  * Vue Component
  */
-@Component
+@Component({
+    components: {
+        SampleModal
+    }
+})
 export default class Sample extends Vue {
     /**
      * 画像読み込み
@@ -70,10 +73,6 @@ export default class Sample extends Vue {
     } as Imgs;
 
     protected text = 'Hello Vue.';
-
-    protected beforeCreate(): void {
-        VueUtil.registerComponents([SampleModal]);
-    }
 
     /**
      * 算術プロパティ例

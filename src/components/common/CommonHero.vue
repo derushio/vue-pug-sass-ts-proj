@@ -8,7 +8,6 @@ section.vue-common-hero.hero
 
 <script lang='ts'>
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import VueUtil from '@/scripts/util/VueUtil';
 
 /**
  * Vue Component

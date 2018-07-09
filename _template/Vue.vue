@@ -4,7 +4,6 @@
 
 <script lang='ts'>
 import { Vue, Component } from 'vue-property-decorator';
-import VueUtil from '@/scripts/util/VueUtil';
 
 /**
  * Vue Component
